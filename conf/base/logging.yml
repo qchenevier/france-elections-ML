@@ -9,8 +9,8 @@ formatters:
 
 handlers:
     console:
-        class: logging.StreamHandler
-        level: INFO
+        class: kedro.extras.logging.ColorHandler
+        level: DEBUG
         formatter: simple
         stream: ext://sys.stdout
 
