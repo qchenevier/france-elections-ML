@@ -84,3 +84,12 @@ census_tract_shape:
   type: geopandas.GeoJSONDataSet
   filepath: data/02_intermediate/census_tract_shape.shp
 
+features:
+  type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
+  filepath: data/05_model_input/features.parquet
+  save_args:
+    use_pyarrow: True
+
+targets:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/targets.parquet
