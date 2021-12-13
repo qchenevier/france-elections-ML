@@ -2,3 +2,68 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html
+
+census_raw@text:
+  type: text.TextDataSet
+  filepath: data/01_raw/FD_INDCVI_2017.csv
+
+census_raw@CSV:
+  type: france_elections_ML.extras.datasets.polars.csv_dataset.CSVDataSet
+  filepath: data/01_raw/FD_INDCVI_2017.csv
+  load_args:
+    sep: ";"
+    infer_schema_length: null
+
+census_metadata_raw@text:
+  type: text.TextDataSet
+  filepath: data/01_raw/varmod_INDCVI_2017.csv
+
+census_metadata_raw@CSV:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/varmod_INDCVI_2017.csv
+  load_args:
+    sep: ";"
+
+commune_code_raw@text:
+  type: text.TextDataSet
+  filepath: data/01_raw/communes2020.csv
+
+commune_code_raw@CSV:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/communes2020.csv
+
+IRIS_shape_raw:
+  type: geopandas.GeoJSONDataSet
+  filepath: data/01_raw/CONTOURS-IRIS.shp
+
+municipales_2020_t1_raw:
+  type: text.TextDataSet
+  filepath: data/01_raw/2020-05-18-resultats-par-niveau-burvot-t1-france-entiere.txt
+
+municipales_2020_t1_raw_fixed@text:
+  type: text.TextDataSet
+  filepath: data/02_intermediate/municipales_2020_t1_raw_fixed.txt
+
+municipales_2020_t1_raw_fixed@CSV:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/municipales_2020_t1_raw_fixed.txt
+  load_args:
+    sep: "\t"
+
+municipales_2020_t1:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/municipales_2020_t1.parquet
+
+census_metadata:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/census_metadata.parquet
+
+census:
+  type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
+  filepath: data/02_intermediate/census.parquet
+  save_args:
+    use_pyarrow: True
+
+commune_shape:
+  type: geopandas.GeoJSONDataSet
+  filepath: data/02_intermediate/commune_shape.shp

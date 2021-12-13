@@ -1,8 +1,7 @@
 # %%
 import geopandas as gpd
-from pathlib import Path
 
-from .utils import download_and_extract_dataset, read_text_file
+from .utils import download_and_extract_dataset
 
 
 # %%
@@ -22,7 +21,7 @@ def download_and_extract_commune_code_raw():
     )
 
 
-def download_and_extract_commune_shape_raw():
+def download_and_extract_IRIS_shape_raw():
     return download_and_extract_dataset(
         url="ftp://Contours_IRIS_ext:ao6Phu5ohJ4jaeji@ftp3.ign.fr/CONTOURS-IRIS_2-1__SHP__FRA_2020-01-01.7z",
         extract=(
@@ -42,7 +41,8 @@ def download_and_extract_municipales_2020_t1():
             "elections-municipales-2020-resultats/20200525-133745/"
             "2020-05-18-resultats-par-niveau-burvot-t1-france-entiere.txt"
         ),
-        read_kwargs=dict(encoding="ISO-8859-1")
+        read_kwargs=dict(encoding="ISO-8859-1"),
     )
+
 
 # %%

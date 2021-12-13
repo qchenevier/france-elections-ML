@@ -3,7 +3,7 @@ from kedro.pipeline import Pipeline, node
 from .download_and_extract import (
     download_and_extract_census_raw,
     download_and_extract_commune_code_raw,
-    download_and_extract_commune_shape_raw,
+    download_and_extract_IRIS_shape_raw,
     download_and_extract_municipales_2020_t1,
 )
 
@@ -24,10 +24,10 @@ def create_pipeline() -> Pipeline:
                 name="commune_code_raw",
             ),
             node(
-                download_and_extract_commune_shape_raw,
+                download_and_extract_IRIS_shape_raw,
                 inputs=None,
-                outputs="commune_shape_raw",
-                name="commune_shape_raw",
+                outputs="IRIS_shape_raw",
+                name="IRIS_shape_raw",
             ),
             node(
                 download_and_extract_municipales_2020_t1,
