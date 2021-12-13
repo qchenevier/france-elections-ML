@@ -64,6 +64,23 @@ census:
   save_args:
     use_pyarrow: True
 
+commune_code_in_census:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/commune_code_in_census.parquet
+
+census_tract_code:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/census_tract_code.parquet
+
+commune_code:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/commune_code.parquet
+
 commune_shape:
   type: geopandas.GeoJSONDataSet
   filepath: data/02_intermediate/commune_shape.shp
+
+census_tract_shape:
+  type: geopandas.GeoJSONDataSet
+  filepath: data/02_intermediate/census_tract_shape.shp
+
