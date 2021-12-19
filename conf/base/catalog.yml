@@ -61,8 +61,6 @@ census_metadata:
 census:
   type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
   filepath: data/02_intermediate/census.parquet
-  save_args:
-    use_pyarrow: True
 
 commune_code_in_census:
   type: pandas.ParquetDataSet
@@ -87,8 +85,6 @@ census_tract_shape:
 features:
   type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
   filepath: data/05_model_input/features.parquet
-  save_args:
-    use_pyarrow: True
 
 targets:
   type: pandas.ParquetDataSet
