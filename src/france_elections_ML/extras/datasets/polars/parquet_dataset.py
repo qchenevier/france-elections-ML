@@ -7,6 +7,7 @@ from typing import Any, Dict
 
 import fsspec
 import polars as pl
+from pyarrow.fs import PyFileSystem, FSSpecHandler
 
 from kedro.io.core import (
     HTTP_PROTOCOLS,
@@ -157,7 +158,17 @@ class ParquetDataSet(AbstractVersionedDataSet):
         save_path = get_filepath_str(self._get_save_path(), self._protocol)
         if self._protocol not in HTTP_PROTOCOLS:
             self._fs.makedirs(Path(save_path).parent.as_posix(), exist_ok=True)
-        data.to_parquet(save_path, **self._save_args)
+        if self._protocol == "file":
+            data.to_parquet(save_path, **self._save_args)
+        else:
+            if not self._save_args.get("use_pyarrow", False):
+                raise ValueError(
+                    "Polars' parquet writer doesn't support remote (ffspec) "
+                    "filesystems. Please set `use_pyarrow: True` in `save_args`"
+                    " parameters, to use pyarrow engine."
+                )
+            pyarrow_fs = PyFileSystem(FSSpecHandler(self._fs))
+            data.to_parquet(save_path, filesystem=pyarrow_fs, **self._save_args)
         self._invalidate_cache()
 
     def _exists(self) -> bool:
