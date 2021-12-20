@@ -31,11 +31,12 @@ from typing import Dict
 
 from kedro.pipeline import Pipeline
 
-from france_elections_ML.pipelines import raw, intermediate, model_input
+from france_elections_ML.pipelines import raw, intermediate, model_input, models
 
 raw_pipe = raw.create_pipeline()
 intermediate_pipe = intermediate.create_pipeline()
 model_input_pipe = model_input.create_pipeline()
+models_pipe = models.create_pipeline()
 
 
 def register_pipelines() -> Dict[str, Pipeline]:
@@ -45,8 +46,12 @@ def register_pipelines() -> Dict[str, Pipeline]:
         A mapping from a pipeline name to a ``Pipeline`` object.
     """
     return {
-        "__default__": raw_pipe + intermediate_pipe + model_input_pipe,
+        "__default__": raw_pipe
+        + intermediate_pipe
+        + model_input_pipe
+        + models_pipe,
         "raw": raw_pipe,
         "intermediate": intermediate_pipe,
         "model_input": model_input_pipe,
+        "models": models_pipe,
     }

@@ -1,1 +1,7 @@
 features: minimal
+model:
+  seed: 7
+  output_activation: GELU
+  hidden_activation: GELU
+  hidden_layers: 4
+  hidden_size_factor: 0.5
