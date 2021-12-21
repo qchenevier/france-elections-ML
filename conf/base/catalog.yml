@@ -84,8 +84,12 @@ census_tract_shape:
 
 features:
   type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
-  filepath: data/05_model_input/features.parquet
+  filepath: data/05_model_input/${features|}/features.parquet
 
 targets:
   type: pandas.ParquetDataSet
   filepath: data/05_model_input/targets.parquet
+
+model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/${features|}/${model|}/model.pkl
