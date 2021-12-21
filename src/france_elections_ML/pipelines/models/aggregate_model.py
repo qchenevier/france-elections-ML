@@ -15,6 +15,7 @@ class AggregateModel(pl.LightningModule):
         hidden_size_factor=0.5,
     ):
         super().__init__()
+        self.save_hyperparameters()
         self.n_features = n_features
         self.n_targets = n_targets
         self.hidden_layers = hidden_layers

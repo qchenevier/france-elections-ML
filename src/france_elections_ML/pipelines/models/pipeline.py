@@ -14,7 +14,7 @@ def create_pipeline() -> Pipeline:
                     "params:features",
                     "params:model",
                 ],
-                outputs="finished_training",
+                outputs="model",
                 name="model",
             ),
         ]
