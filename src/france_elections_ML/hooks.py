@@ -27,6 +27,8 @@
 # limitations under the License.
 
 """Project hooks."""
+import logging
+import warnings
 from typing import Any, Dict, Iterable, Optional
 
 from kedro.config import ConfigLoader, TemplatedConfigLoader
@@ -65,3 +67,14 @@ class ProjectHooks:
             save_version,
             journal,
         )
+
+
+class MyHooks:
+    @property
+    def _logger(self):
+        return logging.getLogger(self.__class__.__name__)
+
+    @hook_impl
+    def after_catalog_created(self, catalog: DataCatalog) -> None:
+        # Added because the numpy and sklearn versions clash for np.bool type of checks
+        warnings.simplefilter("ignore", category=(UserWarning, DeprecationWarning))

@@ -27,10 +27,10 @@
 # limitations under the License.
 
 """Project settings."""
-from france_elections_ML.hooks import ProjectHooks
+from france_elections_ML.hooks import ProjectHooks, MyHooks
 
 # Instantiate and list your project hooks here
-HOOKS = (ProjectHooks(),)
+HOOKS = (ProjectHooks(), MyHooks())
 
 # List the installed plugins for which to disable auto-registry
 # DISABLE_HOOKS_FOR_PLUGINS = ("kedro-viz",)
