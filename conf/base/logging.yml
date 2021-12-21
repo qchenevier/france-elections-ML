@@ -61,6 +61,11 @@ loggers:
         handlers: [journal_file_handler]
         propagate: no
 
+    neptune.new.internal.operation_processors.async_operation_processor:
+        level: CRITICAL
+        handlers: [console, info_file_handler, error_file_handler]
+        propagate: no
+
 root:
     level: INFO
     handlers: [console, info_file_handler, error_file_handler]
