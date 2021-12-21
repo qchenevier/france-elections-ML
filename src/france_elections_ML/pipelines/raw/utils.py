@@ -57,7 +57,11 @@ def read_text_file(filepath, **kwargs):
 
 
 def download_and_extract_dataset(
-    url, extract=None, read_func=read_text_file, data_dir=Path("data"), read_kwargs={}
+    url,
+    extract=None,
+    read_func=read_text_file,
+    data_dir=Path("data"),
+    read_kwargs={},
 ):
     filename = url.split("/")[-1]
     filepath = data_dir / filename
@@ -66,7 +70,9 @@ def download_and_extract_dataset(
     extract_files = extract if extract else filename
 
     if isinstance(extract_files, list):
-        text_datasets = [read_func(dirpath / name, **read_kwargs) for name in extract_files]
+        text_datasets = [
+            read_func(dirpath / name, **read_kwargs) for name in extract_files
+        ]
     else:
         text_datasets = read_func(dirpath / extract_files, **read_kwargs)
 
