@@ -18,7 +18,6 @@ def find_checkpoint(checkpoint_dir):
     return next(Path(checkpoint_dir).rglob("*.ckpt"))
 
 
-# %%
 def train_model(df_features, df_targets, name, kwargs):
     model_dir = "./data/tmp"
     version = version_name_from_params(kwargs)
@@ -53,6 +52,7 @@ def train_model(df_features, df_targets, name, kwargs):
             ),
         ],
         max_epochs=max_epochs,
+        enable_progress_bar=False,  # to prevent neptune logger overflow bug
     )
     trainer.fit(model, train_loader, test_loader)
 
