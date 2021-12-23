@@ -137,7 +137,7 @@ def compute_features_list(param_features):
     elif param_features == "complex":
         return groups["personal_profile"] + groups["job"] + groups["wealth"]
     elif param_features == "full":
-        return sum([groups.values()], [])
+        return sum(list(groups.values()), [])
     else:
         return sum([groups[param] for param in param_features.split("+")], [])
 
