@@ -1,0 +1,55 @@
+name: france_elections_ML
+
+channels:
+  - conda-forge
+  - pytorch
+
+dependencies:
+  - python=3.7
+  - jupyterlab
+  - jupyter_console
+
+  ## Development tools
+  - black
+  - flake8
+  - isort
+  - pytest
+  - colorlog
+
+  # Data ops / ML ops
+  - kedro
+  - neptune-client
+  - kedro-neptune
+  - s3fs
+
+  ## Data engineering
+  - pandas
+  - pyarrow
+  - tqdm
+  - python-slugify
+  - geopandas
+
+  ## Machine Learning
+  - scikit-learn
+  - pytorch
+  - pytorch-lightning
+
+  ## Data viz
+  - seaborn
+  - plotly
+  - altair
+  - holoviews
+  - bokeh
+  - geoviews
+
+  ## PIP packages
+  - pip
+  - pip:
+    ## Data ops / ML ops
+    - kedro-viz
+
+    ## Data engineering
+    - topojson
+    - py7zr
+    - polars
+    - jsonschema[format] # required by kedro neptune
