@@ -160,3 +160,6 @@ venv.bak/
 
 # neptune
 .neptune
+
+# tmp files
+*/tmp*
