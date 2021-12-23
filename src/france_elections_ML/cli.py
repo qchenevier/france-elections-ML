@@ -28,9 +28,11 @@
 
 """Command line tools for manipulating a Kedro project.
 Intended to be invoked via `kedro`."""
+from copy import deepcopy
 from itertools import chain
 from pathlib import Path
 from typing import Iterable, Tuple
+import yaml
 
 import click
 from kedro.framework.cli.utils import (
@@ -49,8 +51,12 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 FROM_INPUTS_HELP = (
     """A list of dataset names which should be used as a starting point."""
 )
-TO_OUTPUTS_HELP = """A list of dataset names which should be used as an end point."""
-FROM_NODES_HELP = """A list of node names which should be used as a starting point."""
+TO_OUTPUTS_HELP = (
+    """A list of dataset names which should be used as an end point."""
+)
+FROM_NODES_HELP = (
+    """A list of node names which should be used as a starting point."""
+)
 TO_NODES_HELP = """A list of node names which should be used as an end point."""
 NODE_ARG_HELP = """Run only nodes with specified names."""
 RUNNER_ARG_HELP = """Specify a runner that you want to run the pipeline with.
@@ -64,7 +70,9 @@ with threads. If not specified, load and save datasets synchronously."""
 TAG_ARG_HELP = """Construct the pipeline using only nodes which have this tag
 attached. Option can be used multiple times, what results in a
 pipeline constructed from nodes having any of those tags."""
-LOAD_VERSION_HELP = """Specify a particular dataset version (timestamp) for loading."""
+LOAD_VERSION_HELP = (
+    """Specify a particular dataset version (timestamp) for loading."""
+)
 CONFIG_FILE_HELP = """Specify a YAML configuration file to load the run
 command arguments from. If command line arguments are provided, they will
 override the loaded ones."""
@@ -73,59 +81,34 @@ If not set, the project pipeline is run by default."""
 PARAMS_ARG_HELP = """Specify extra parameters that you want to pass
 to the context initializer. Items must be separated by comma, keys - by colon,
 example: param1:value1,param2:value2. Each parameter is split by the first comma,
-so parameter values are allowed to contain colons, parameter keys are not."""
+so parameter values are allowed to contain colons, parameter keys are not. This
+option cannot be used together with --runconfs_file."""
+RUNCONFS_FILE_ARG_HELP = """Specify a YAML parameters file to load multiple
+params and trigger multiple runs. This option cannot be used together with --params."""
+
+
+def _load_default_params():
+    package_name = str(Path(__file__).resolve().parent.name)
+    with KedroSession.create(package_name) as session:
+        context = session.load_context()
+        return context.params
+
+
+def _compute_params(default_params, params_update):
+    params = deepcopy(default_params)
+    for key, value in params_update.items():
+        if isinstance(params[key], dict):
+            params[key].update(value)
+        else:
+            params[key] = value
+    return params
 
 
 def _get_values_as_tuple(values: Iterable[str]) -> Tuple[str, ...]:
     return tuple(chain.from_iterable(value.split(",") for value in values))
 
 
-@click.group(context_settings=CONTEXT_SETTINGS, name=__file__)
-def cli():
-    """Command line tools for manipulating a Kedro project."""
-
-
-@cli.command()
-@click.option(
-    "--from-inputs", type=str, default="", help=FROM_INPUTS_HELP, callback=split_string
-)
-@click.option(
-    "--to-outputs", type=str, default="", help=TO_OUTPUTS_HELP, callback=split_string
-)
-@click.option(
-    "--from-nodes", type=str, default="", help=FROM_NODES_HELP, callback=split_string
-)
-@click.option(
-    "--to-nodes", type=str, default="", help=TO_NODES_HELP, callback=split_string
-)
-@click.option("--node", "-n", "node_names", type=str, multiple=True, help=NODE_ARG_HELP)
-@click.option(
-    "--runner", "-r", type=str, default=None, multiple=False, help=RUNNER_ARG_HELP
-)
-@click.option("--parallel", "-p", is_flag=True, multiple=False, help=PARALLEL_ARG_HELP)
-@click.option("--async", "is_async", is_flag=True, multiple=False, help=ASYNC_ARG_HELP)
-@env_option
-@click.option("--tag", "-t", type=str, multiple=True, help=TAG_ARG_HELP)
-@click.option(
-    "--load-version",
-    "-lv",
-    type=str,
-    multiple=True,
-    help=LOAD_VERSION_HELP,
-    callback=_reformat_load_versions,
-)
-@click.option("--pipeline", type=str, default=None, help=PIPELINE_ARG_HELP)
-@click.option(
-    "--config",
-    "-c",
-    type=click.Path(exists=True, dir_okay=False, resolve_path=True),
-    help=CONFIG_FILE_HELP,
-    callback=_config_file_callback,
-)
-@click.option(
-    "--params", type=str, default="", help=PARAMS_ARG_HELP, callback=_split_params
-)
-def run(
+def _run(
     tag,
     env,
     parallel,
@@ -156,7 +139,9 @@ def run(
     node_names = _get_values_as_tuple(node_names) if node_names else node_names
 
     package_name = str(Path(__file__).resolve().parent.name)
-    with KedroSession.create(package_name, env=env, extra_params=params) as session:
+    with KedroSession.create(
+        package_name, env=env, extra_params=params
+    ) as session:
         session.run(
             tags=tag,
             runner=runner_class(is_async=is_async),
@@ -167,4 +152,147 @@ def run(
             to_outputs=to_outputs,
             load_versions=load_version,
             pipeline_name=pipeline,
+        )
+
+
+@click.group(context_settings=CONTEXT_SETTINGS, name=__file__)
+def cli():
+    """Command line tools for manipulating a Kedro project."""
+
+
+@cli.command()
+@click.option(
+    "--from-inputs",
+    type=str,
+    default="",
+    help=FROM_INPUTS_HELP,
+    callback=split_string,
+)
+@click.option(
+    "--to-outputs",
+    type=str,
+    default="",
+    help=TO_OUTPUTS_HELP,
+    callback=split_string,
+)
+@click.option(
+    "--from-nodes",
+    type=str,
+    default="",
+    help=FROM_NODES_HELP,
+    callback=split_string,
+)
+@click.option(
+    "--to-nodes",
+    type=str,
+    default="",
+    help=TO_NODES_HELP,
+    callback=split_string,
+)
+@click.option(
+    "--node", "-n", "node_names", type=str, multiple=True, help=NODE_ARG_HELP
+)
+@click.option(
+    "--runner",
+    "-r",
+    type=str,
+    default=None,
+    multiple=False,
+    help=RUNNER_ARG_HELP,
+)
+@click.option(
+    "--parallel", "-p", is_flag=True, multiple=False, help=PARALLEL_ARG_HELP
+)
+@click.option(
+    "--async", "is_async", is_flag=True, multiple=False, help=ASYNC_ARG_HELP
+)
+@env_option
+@click.option("--tag", "-t", type=str, multiple=True, help=TAG_ARG_HELP)
+@click.option(
+    "--load-version",
+    "-lv",
+    type=str,
+    multiple=True,
+    help=LOAD_VERSION_HELP,
+    callback=_reformat_load_versions,
+)
+@click.option("--pipeline", type=str, default=None, help=PIPELINE_ARG_HELP)
+@click.option(
+    "--config",
+    "-c",
+    type=click.Path(exists=True, dir_okay=False, resolve_path=True),
+    help=CONFIG_FILE_HELP,
+    callback=_config_file_callback,
+)
+@click.option(
+    "--params",
+    type=str,
+    default="",
+    help=PARAMS_ARG_HELP,
+    callback=_split_params,
+)
+@click.option(
+    "--runconfs_file", type=str, default="", help=RUNCONFS_FILE_ARG_HELP
+)
+def run(
+    tag,
+    env,
+    parallel,
+    runner,
+    is_async,
+    node_names,
+    to_nodes,
+    from_nodes,
+    from_inputs,
+    to_outputs,
+    load_version,
+    pipeline,
+    config,
+    params,
+    runconfs_file,
+):
+    if params and runconfs_file:
+        raise KedroCliError(
+            "Both --params and --runconfs_file options cannot be used together. "
+            "Please use either --params or --runconfs_file."
+        )
+
+    if runconfs_file:
+        default_params = _load_default_params()
+        with open(runconfs_file, "r") as f:
+            runconfs = yaml.load(f, Loader=yaml.FullLoader)
+        for runconf in runconfs:
+            _run(
+                runconf.get("env", env),
+                runconf.get("tag", tag),
+                runconf.get("parallel", parallel),
+                runconf.get("runner", runner),
+                runconf.get("is_async", is_async),
+                runconf.get("node_names", node_names),
+                runconf.get("to_nodes", to_nodes),
+                runconf.get("from_nodes", from_nodes),
+                runconf.get("from_inputs", from_inputs),
+                runconf.get("to_outputs", to_outputs),
+                runconf.get("load_version", load_version),
+                runconf.get("pipeline", pipeline),
+                runconf.get("config", config),
+                _compute_params(default_params, runconf.get("params", params)),
+            )
+
+    else:
+        _run(
+            tag,
+            env,
+            parallel,
+            runner,
+            is_async,
+            node_names,
+            to_nodes,
+            from_nodes,
+            from_inputs,
+            to_outputs,
+            load_version,
+            pipeline,
+            config,
+            params,
         )
