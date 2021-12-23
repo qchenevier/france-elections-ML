@@ -1,0 +1,13 @@
+- node_names:
+  - model
+  params:
+    model:
+      max_epochs: 10
+- node_names:
+  - model
+  params:
+    features: minimal
+    model:
+      max_epochs: 3000
+      hidden_layers: 2
+      hidden_size_factor: 8.0
