@@ -47,9 +47,10 @@ dependencies:
   - pip:
     ## Data ops / ML ops
     - kedro-viz
+    - kedro-docker
 
     ## Data engineering
     - topojson
     - py7zr
     - polars
-    - jsonschema[format] # required by kedro neptune
+    - jsonschema[format]<4 # required by kedro neptune

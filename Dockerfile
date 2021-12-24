@@ -1,9 +1,15 @@
-ARG BASE_IMAGE=python:3.6-buster
+ARG BASE_IMAGE=condaforge/mambaforge
 FROM $BASE_IMAGE
 
 # install project requirements
-COPY src/requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
+COPY src/.condarc /root/.condarc
+COPY src/pip.conf /root/pip.conf
+ENV PIP_CONFIG_FILE /root/pip.conf
+COPY src/environment.yml /tmp/environment.yml
+RUN mamba env create -f /tmp/environment.yml && \
+    mamba clean --all --yes
+RUN echo "source activate france_elections_ML" > ~/.bashrc
+ENV PATH /opt/conda/envs/france_elections_ML/bin:$PATH
 
 # add kedro user
 ARG KEDRO_UID=999
@@ -20,4 +26,5 @@ RUN chmod -R a+w /home/kedro
 
 EXPOSE 8888
 
+ENV NEPTUNE_ALLOW_SELF_SIGNED_CERTIFICATE true
 CMD ["kedro", "run"]
