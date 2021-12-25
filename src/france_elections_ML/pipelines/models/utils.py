@@ -1,5 +1,4 @@
-import hashlib
-import pickle
+import logging
 from pathlib import Path
 
 import numpy as np
@@ -72,22 +71,17 @@ class ConcatDataset(torch.utils.data.Dataset):
 
 
 class CachedDataset(torch.utils.data.Dataset):
-    def __init__(self, dataset, cache_folder, prefix=None):
+    def __init__(self, dataset):
         self.dataset = dataset
-        self.prefix = "_" + prefix if prefix else ""
-        self.cache_folder = Path(cache_folder)
-
-    def _slice_filepath(self, s):
-        filename = f"cache{self.prefix}_{s.start:04d}_{s.stop:04d}.pkl"
-        return self.cache_folder / filename
+        self._cache_dict = dict()
 
     def _cache(self, dataset, s):
-        cache_file = self._slice_filepath(s)
-        if not cache_file.exists():
-            with open(cache_file, "wb") as f:
-                pickle.dump(dataset[s], f)
-        with open(cache_file, "rb") as f:
-            return pickle.load(f)
+        slice_ID = f"{s.start:04d}:{s.stop:04d}"
+        if slice_ID not in self._cache_dict:
+            log = logging.getLogger(__name__)
+            log.info("Caching data for slice %s", slice_ID)
+            self._cache_dict[slice_ID] = dataset[s]
+        return self._cache_dict[slice_ID]
 
     def __getitem__(self, s):
         if isinstance(s, int):
@@ -96,15 +90,6 @@ class CachedDataset(torch.utils.data.Dataset):
 
     def __len__(self):
         return len(self.dataset)
-
-    def clean_cache(self):
-        for p in self.cache_folder.rglob(f"cache{self.prefix}*.pkl"):
-            p.unlink()
-
-    @classmethod
-    def clean_cache_folder(cls, cache_folder):
-        for p in cache_folder.rglob("cache*.pkl"):
-            p.unlink()
 
 
 class SlicedDataset(torch.utils.data.Dataset):
@@ -132,13 +117,6 @@ def get_last_checkpoint(log_folder="lightning_logs"):
     return str(checkpoints[-1]) if checkpoints else None
 
 
-def hash_list(list_to_hash, n_chars=6):
-    m = hashlib.md5()
-    for s in tuple(list_to_hash):
-        m.update(s.encode())
-    return m.hexdigest()[:n_chars]
-
-
 def get_df_columns(df):
     if isinstance(df, pd.DataFrame) or isinstance(df, pl.DataFrame):
         return list(df.columns)
@@ -151,12 +129,10 @@ class MasterDataset(torch.utils.data.Dataset):
         df_features,
         df_targets,
         ID_column,
-        cache_folder="data",
         n_slices=50,
     ):
         self.features = get_df_columns(df_features)
         self.targets = get_df_columns(df_targets)
-        self.cache_prefix = hash_list(self.features + self.targets)
 
         IDs = sorted(
             set(df_targets[ID_column].unique())
@@ -166,9 +142,7 @@ class MasterDataset(torch.utils.data.Dataset):
         targets_dataset = GroupbyDataset(df_targets, ID_column, IDs)
 
         concat_dataset = ConcatDataset(features_dataset, targets_dataset)
-        cached_dataset = CachedDataset(
-            concat_dataset, cache_folder=cache_folder, prefix=self.cache_prefix
-        )
+        cached_dataset = CachedDataset(concat_dataset)
         self.dataset = SlicedDataset(cached_dataset, n_slices=n_slices)
 
     def __len__(self):
