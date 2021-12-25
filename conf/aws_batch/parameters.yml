@@ -1,4 +1,0 @@
-aws_batch:
-    job_queue: "france-elections-ML-queue"
-    job_definition: "kedro_run"
-    max_workers: 2
