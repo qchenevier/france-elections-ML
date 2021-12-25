@@ -5,7 +5,7 @@ FROM $BASE_IMAGE
 COPY src/.condarc /root/.condarc
 COPY src/pip.conf /root/pip.conf
 ENV PIP_CONFIG_FILE /root/pip.conf
-COPY src/environment.yml /tmp/environment.yml
+COPY src/environment_docker.yml /tmp/environment.yml
 RUN mamba env create -f /tmp/environment.yml && \
     mamba clean --all --yes
 RUN echo "source activate france_elections_ML" > ~/.bashrc

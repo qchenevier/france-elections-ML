@@ -5,91 +5,95 @@
 
 census_raw@text:
   type: text.TextDataSet
-  filepath: data/01_raw/FD_INDCVI_2017.csv
+  filepath: s3://france-elections-ml/01_raw/FD_INDCVI_2017.csv
 
 census_raw@CSV:
   type: france_elections_ML.extras.datasets.polars.csv_dataset.CSVDataSet
-  filepath: data/01_raw/FD_INDCVI_2017.csv
+  filepath: s3://france-elections-ml/01_raw/FD_INDCVI_2017.csv
   load_args:
     sep: ";"
     infer_schema_length: null
 
 census_metadata_raw@text:
   type: text.TextDataSet
-  filepath: data/01_raw/varmod_INDCVI_2017.csv
+  filepath: s3://france-elections-ml/01_raw/varmod_INDCVI_2017.csv
 
 census_metadata_raw@CSV:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/varmod_INDCVI_2017.csv
+  filepath: s3://france-elections-ml/01_raw/varmod_INDCVI_2017.csv
   load_args:
     sep: ";"
 
 commune_code_raw@text:
   type: text.TextDataSet
-  filepath: data/01_raw/communes2020.csv
+  filepath: s3://france-elections-ml/01_raw/communes2020.csv
 
 commune_code_raw@CSV:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/communes2020.csv
+  filepath: s3://france-elections-ml/01_raw/communes2020.csv
 
 IRIS_shape_raw:
   type: geopandas.GeoJSONDataSet
-  filepath: data/01_raw/CONTOURS-IRIS.shp
+  filepath: s3://france-elections-ml/01_raw/CONTOURS-IRIS.shp
 
 municipales_2020_t1_raw:
   type: text.TextDataSet
-  filepath: data/01_raw/2020-05-18-resultats-par-niveau-burvot-t1-france-entiere.txt
+  filepath: s3://france-elections-ml/01_raw/2020-05-18-resultats-par-niveau-burvot-t1-france-entiere.txt
 
 municipales_2020_t1_raw_fixed@text:
   type: text.TextDataSet
-  filepath: data/02_intermediate/municipales_2020_t1_raw_fixed.txt
+  filepath: s3://france-elections-ml/02_intermediate/municipales_2020_t1_raw_fixed.txt
 
 municipales_2020_t1_raw_fixed@CSV:
   type: pandas.CSVDataSet
-  filepath: data/02_intermediate/municipales_2020_t1_raw_fixed.txt
+  filepath: s3://france-elections-ml/02_intermediate/municipales_2020_t1_raw_fixed.txt
   load_args:
     sep: "\t"
 
 municipales_2020_t1:
   type: pandas.ParquetDataSet
-  filepath: data/02_intermediate/municipales_2020_t1.parquet
+  filepath: s3://france-elections-ml/02_intermediate/municipales_2020_t1.parquet
 
 census_metadata:
   type: pandas.ParquetDataSet
-  filepath: data/02_intermediate/census_metadata.parquet
+  filepath: s3://france-elections-ml/02_intermediate/census_metadata.parquet
 
 census:
   type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
-  filepath: data/02_intermediate/census.parquet
+  filepath: s3://france-elections-ml/02_intermediate/census.parquet
+  save_args:
+    use_pyarrow: True
 
 commune_code_in_census:
   type: pandas.ParquetDataSet
-  filepath: data/02_intermediate/commune_code_in_census.parquet
+  filepath: s3://france-elections-ml/02_intermediate/commune_code_in_census.parquet
 
 census_tract_code:
   type: pandas.ParquetDataSet
-  filepath: data/02_intermediate/census_tract_code.parquet
+  filepath: s3://france-elections-ml/02_intermediate/census_tract_code.parquet
 
 commune_code:
   type: pandas.ParquetDataSet
-  filepath: data/02_intermediate/commune_code.parquet
+  filepath: s3://france-elections-ml/02_intermediate/commune_code.parquet
 
 commune_shape:
   type: geopandas.GeoJSONDataSet
-  filepath: data/02_intermediate/commune_shape.shp
+  filepath: s3://france-elections-ml/02_intermediate/commune_shape.shp
 
 census_tract_shape:
   type: geopandas.GeoJSONDataSet
-  filepath: data/02_intermediate/census_tract_shape.shp
+  filepath: s3://france-elections-ml/02_intermediate/census_tract_shape.shp
 
 features:
   type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
-  filepath: data/05_model_input/${features|}/features.parquet
+  filepath: s3://france-elections-ml/05_model_input/${features|}/features.parquet
+  save_args:
+    use_pyarrow: True
 
 targets:
   type: pandas.ParquetDataSet
-  filepath: data/05_model_input/targets.parquet
+  filepath: s3://france-elections-ml/05_model_input/targets.parquet
 
 model:
   type: pickle.PickleDataSet
-  filepath: data/06_models/${features|}/${model|}/model.pkl
+  filepath: s3://france-elections-ml/06_models/${features|}/${model|}/model.pkl
