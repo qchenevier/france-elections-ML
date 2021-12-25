@@ -32,7 +32,6 @@ from copy import deepcopy
 from itertools import chain
 from pathlib import Path
 from typing import Iterable, Tuple
-import yaml
 
 import click
 from kedro.framework.cli.utils import (
@@ -83,8 +82,6 @@ to the context initializer. Items must be separated by comma, keys - by colon,
 example: param1:value1,param2:value2. Each parameter is split by the first comma,
 so parameter values are allowed to contain colons, parameter keys are not. This
 option cannot be used together with --runconfs_file."""
-RUNCONFS_FILE_ARG_HELP = """Specify a YAML parameters file to load multiple
-params and trigger multiple runs. This option cannot be used together with --params."""
 
 
 def _load_default_params():
@@ -108,51 +105,13 @@ def _get_values_as_tuple(values: Iterable[str]) -> Tuple[str, ...]:
     return tuple(chain.from_iterable(value.split(",") for value in values))
 
 
-def _run(
-    tag,
-    env,
-    parallel,
-    runner,
-    is_async,
-    node_names,
-    to_nodes,
-    from_nodes,
-    from_inputs,
-    to_outputs,
-    load_version,
-    pipeline,
-    config,
-    params,
-):
-    """Run the pipeline."""
-    if parallel and runner:
-        raise KedroCliError(
-            "Both --parallel and --runner options cannot be used together. "
-            "Please use either --parallel or --runner."
-        )
-    runner = runner or "SequentialRunner"
-    if parallel:
-        runner = "ParallelRunner"
+def _instantiate_runner(runner, is_async, project_context):
     runner_class = load_obj(runner, "kedro.runner")
-
-    tag = _get_values_as_tuple(tag) if tag else tag
-    node_names = _get_values_as_tuple(node_names) if node_names else node_names
-
-    package_name = str(Path(__file__).resolve().parent.name)
-    with KedroSession.create(
-        package_name, env=env, extra_params=params
-    ) as session:
-        session.run(
-            tags=tag,
-            runner=runner_class(is_async=is_async),
-            node_names=node_names,
-            from_nodes=from_nodes,
-            to_nodes=to_nodes,
-            from_inputs=from_inputs,
-            to_outputs=to_outputs,
-            load_versions=load_version,
-            pipeline_name=pipeline,
-        )
+    runner_kwargs = dict(is_async=is_async)
+    if runner.endswith("AWSBatchRunner"):
+        batch_kwargs = project_context.params.get("aws_batch") or {}
+        runner_kwargs.update(batch_kwargs)
+    return runner_class(**runner_kwargs)
 
 
 @click.group(context_settings=CONTEXT_SETTINGS, name=__file__)
@@ -231,9 +190,6 @@ def cli():
     help=PARAMS_ARG_HELP,
     callback=_split_params,
 )
-@click.option(
-    "--runconfs_file", type=str, default="", help=RUNCONFS_FILE_ARG_HELP
-)
 def run(
     tag,
     env,
@@ -249,50 +205,34 @@ def run(
     pipeline,
     config,
     params,
-    runconfs_file,
 ):
-    if params and runconfs_file:
+    """Run the pipeline."""
+    if parallel and runner:
         raise KedroCliError(
-            "Both --params and --runconfs_file options cannot be used together. "
-            "Please use either --params or --runconfs_file."
+            "Both --parallel and --runner options cannot be used together. "
+            "Please use either --parallel or --runner."
         )
+    runner = runner or "SequentialRunner"
+    if parallel:
+        runner = "ParallelRunner"
 
-    if runconfs_file:
-        default_params = _load_default_params()
-        with open(runconfs_file, "r") as f:
-            runconfs = yaml.load(f, Loader=yaml.FullLoader)
-        for runconf in runconfs:
-            _run(
-                runconf.get("env", env),
-                runconf.get("tag", tag),
-                runconf.get("parallel", parallel),
-                runconf.get("runner", runner),
-                runconf.get("is_async", is_async),
-                runconf.get("node_names", node_names),
-                runconf.get("to_nodes", to_nodes),
-                runconf.get("from_nodes", from_nodes),
-                runconf.get("from_inputs", from_inputs),
-                runconf.get("to_outputs", to_outputs),
-                runconf.get("load_version", load_version),
-                runconf.get("pipeline", pipeline),
-                runconf.get("config", config),
-                _compute_params(default_params, runconf.get("params", params)),
-            )
+    tag = _get_values_as_tuple(tag) if tag else tag
+    node_names = _get_values_as_tuple(node_names) if node_names else node_names
 
-    else:
-        _run(
-            tag,
-            env,
-            parallel,
-            runner,
-            is_async,
-            node_names,
-            to_nodes,
-            from_nodes,
-            from_inputs,
-            to_outputs,
-            load_version,
-            pipeline,
-            config,
-            params,
+    package_name = str(Path(__file__).resolve().parent.name)
+    with KedroSession.create(
+        package_name, env=env, extra_params=params
+    ) as session:
+        context = session.load_context()
+        runner_instance = _instantiate_runner(runner, is_async, context)
+        session.run(
+            tags=tag,
+            runner=runner_instance,
+            node_names=node_names,
+            from_nodes=from_nodes,
+            to_nodes=to_nodes,
+            from_inputs=from_inputs,
+            to_outputs=to_outputs,
+            load_versions=load_version,
+            pipeline_name=pipeline,
         )
