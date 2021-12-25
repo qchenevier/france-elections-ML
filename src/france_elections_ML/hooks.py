@@ -76,5 +76,4 @@ class MyHooks:
 
     @hook_impl
     def after_catalog_created(self, catalog: DataCatalog) -> None:
-        # Added because the numpy and sklearn versions clash for np.bool type of checks
         warnings.simplefilter("ignore", category=(UserWarning, DeprecationWarning))

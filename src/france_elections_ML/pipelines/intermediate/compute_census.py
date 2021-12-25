@@ -13,6 +13,6 @@ def compute_census(df_census_raw, df_census_metadata):
 
     df = df_census_raw.rename(rename_dict)
 
-    log.info("Sorting dataframe")
+    log.info("Census: sorting dataframe")
     df.sort(df.columns, in_place=True)
     return df
