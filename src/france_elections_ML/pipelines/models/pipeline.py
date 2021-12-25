@@ -11,8 +11,7 @@ def create_pipeline() -> Pipeline:
                 inputs=[
                     "features",
                     "targets",
-                    "params:features",
-                    "params:model",
+                    "parameters",
                 ],
                 outputs="model",
                 name="model",

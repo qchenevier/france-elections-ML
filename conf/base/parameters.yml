@@ -1,8 +1,9 @@
 features: minimal
+trainer:
+  seed: 17
+  max_epochs: 10
 model:
-  seed: 7
   output_activation: GELU
   hidden_activation: GELU
   hidden_layers: 4
   hidden_size_factor: 0.5
-  max_epochs: 10

@@ -18,13 +18,17 @@ def find_checkpoint(checkpoint_dir):
     return next(Path(checkpoint_dir).rglob("*.ckpt"))
 
 
-def train_model(df_features, df_targets, name, kwargs):
+def train_model(df_features, df_targets, parameters):
+    name = parameters.get("features", "minimal")
+    trainer_parameters = parameters.get("trainer", {})
+    seed = trainer_parameters.get("seed", 7)
+    max_epochs = trainer_parameters.get("max_epochs", 10)
+    model_parameters = parameters.get("model", {})
+    version = version_name_from_params(model_parameters)
+
     model_dir = "./data/tmp"
-    version = version_name_from_params(kwargs)
     checkpoint_dir = os.path.join(model_dir, name, version)
-    seed = kwargs.pop("seed", 7)
     pl.utilities.seed.seed_everything(seed, workers=True)
-    max_epochs = kwargs.pop("max_epochs", 10)
 
     df_targets_non_null = df_targets.loc[lambda df: ~(df == 0).any(axis=1)]
     dataset = MasterDataset(
@@ -37,7 +41,9 @@ def train_model(df_features, df_targets, name, kwargs):
     not_feature_or_target = ["code_census_tract", "population"]
     n_features = len(set(dataset.features) - set(not_feature_or_target))
     n_targets = len(set(dataset.targets) - set(not_feature_or_target))
-    model = AggregateModel(n_features=n_features, n_targets=n_targets, **kwargs)
+    model = AggregateModel(
+        n_features=n_features, n_targets=n_targets, **model_parameters
+    )
 
     trainer = pl.Trainer(
         logger=[pl.loggers.NeptuneLogger(tags=[name], name=name)],
