@@ -19,7 +19,7 @@ def find_checkpoint(checkpoint_dir):
 
 
 def train_model(df_features, df_targets, parameters):
-    name = parameters.get("features", "minimal")
+    features = parameters.get("features", "minimal")
     trainer_parameters = parameters.get("trainer", {})
     seed = trainer_parameters.get("seed", 7)
     max_epochs = trainer_parameters.get("max_epochs", 10)
@@ -27,7 +27,7 @@ def train_model(df_features, df_targets, parameters):
     version = version_name_from_params(model_parameters)
 
     model_dir = "./data/tmp"
-    checkpoint_dir = os.path.join(model_dir, name, version)
+    checkpoint_dir = os.path.join(model_dir, features, version)
     pl.utilities.seed.seed_everything(seed, workers=True)
 
     df_targets_non_null = df_targets.loc[lambda df: ~(df == 0).any(axis=1)]
@@ -46,7 +46,16 @@ def train_model(df_features, df_targets, parameters):
     )
 
     trainer = pl.Trainer(
-        logger=[pl.loggers.NeptuneLogger(tags=[name], name=name)],
+        logger=[
+            pl.loggers.NeptuneLogger(
+                tags=[
+                    f"features: {features}",
+                    f"seed: {seed}",
+                    f"max_epochs: {max_epochs}",
+                ],
+                name=features,
+            )
+        ],
         callbacks=[
             pl.callbacks.ModelCheckpoint(
                 dirpath=checkpoint_dir,
