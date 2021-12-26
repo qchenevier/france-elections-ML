@@ -1,6 +1,7 @@
 from kedro.pipeline import Pipeline, node
 
 from .train_model import train_model
+from .generate_params_and_catalogs import params_dict
 
 
 def create_pipeline() -> Pipeline:
@@ -9,12 +10,13 @@ def create_pipeline() -> Pipeline:
             node(
                 train_model,
                 inputs=[
-                    "features",
+                    f"features_{params['features']}",
                     "targets",
-                    "parameters",
+                    f"params:{model_name}",
                 ],
-                outputs="model",
-                name="model",
-            ),
+                outputs=model_name,
+                name=model_name,
+            )
+            for model_name, params in params_dict.items()
         ]
     )

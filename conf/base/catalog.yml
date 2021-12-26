@@ -84,16 +84,15 @@ census_tract_shape:
   type: geopandas.GeoJSONDataSet
   filepath: s3://france-elections-ml/02_intermediate/census_tract_shape.shp
 
-features:
+{% for features in ["minimal", "light", "complex", "full"] %}
+features_{{ features }}:
   type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
-  filepath: s3://france-elections-ml/05_model_input/${features|}/features.parquet
+  filepath: s3://france-elections-ml/05_model_input/features_{{ features }}.parquet
   save_args:
     use_pyarrow: True
+
+{% endfor %}
 
 targets:
   type: pandas.ParquetDataSet
   filepath: s3://france-elections-ml/05_model_input/targets.parquet
-
-model:
-  type: pickle.PickleDataSet
-  filepath: s3://france-elections-ml/06_models/${features|}/${model|}/model.pkl

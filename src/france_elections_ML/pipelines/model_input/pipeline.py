@@ -12,12 +12,19 @@ def create_pipeline() -> Pipeline:
                 inputs=["municipales_2020_t1", "census_tract_code"],
                 outputs="targets",
                 name="targets",
-            ),
+            )
+        ]
+        + [
             node(
                 compute_features,
-                inputs=["census", "census_tract_shape", "params:features"],
-                outputs="features",
-                name="features",
-            ),
+                inputs=[
+                    "census",
+                    "census_tract_shape",
+                    f"params:features_{features}",
+                ],
+                outputs=f"features_{features}",
+                name=f"features_{features}",
+            )
+            for features in ["minimal", "light", "complex", "full"]
         ]
     )

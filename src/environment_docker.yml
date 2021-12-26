@@ -54,3 +54,5 @@ dependencies:
     - py7zr
     - polars
     - jsonschema[format]<4 # required by kedro neptune
+    - unflatten
+    

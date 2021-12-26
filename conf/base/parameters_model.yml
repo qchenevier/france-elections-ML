@@ -1,0 +1,3200 @@
+model_complex_000:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_001:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_002:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_003:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_004:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_005:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_006:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_007:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_008:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_009:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_010:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_011:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_012:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_013:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_014:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_015:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_016:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_017:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_018:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_019:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_020:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_021:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_022:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_023:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_024:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_025:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_026:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_027:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_028:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_029:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_030:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_031:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_032:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_033:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_034:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_035:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_036:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_037:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_038:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_039:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_040:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_041:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_042:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_043:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_044:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_045:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_046:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_047:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_048:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_049:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_050:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_051:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_052:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_053:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_054:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_055:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_056:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_057:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_058:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_059:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_060:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_061:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_062:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_063:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_064:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_065:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_066:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_067:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_068:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_069:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_070:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_071:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_072:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_073:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_074:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_complex_075:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_complex_076:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_complex_077:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_complex_078:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_complex_079:
+  features: complex
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_000:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_001:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_002:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_003:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_004:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_005:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_006:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_007:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_008:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_009:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_010:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_011:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_012:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_013:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_014:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_015:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_016:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_017:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_018:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_019:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_020:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_021:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_022:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_023:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_024:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_025:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_026:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_027:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_028:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_029:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_030:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_031:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_032:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_033:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_034:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_035:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_036:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_037:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_038:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_039:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_040:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_041:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_042:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_043:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_044:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_045:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_046:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_047:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_048:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_049:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_050:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_051:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_052:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_053:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_054:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_055:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_056:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_057:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_058:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_059:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_060:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_061:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_062:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_063:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_064:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_065:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_066:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_067:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_068:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_069:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_070:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_071:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_072:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_073:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_074:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_full_075:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_full_076:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_full_077:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_full_078:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_full_079:
+  features: full
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_000:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_001:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_002:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_003:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_004:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_005:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_006:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_007:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_008:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_009:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_010:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_011:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_012:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_013:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_014:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_015:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_016:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_017:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_018:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_019:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_020:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_021:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_022:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_023:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_024:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_025:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_026:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_027:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_028:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_029:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_030:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_031:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_032:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_033:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_034:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_035:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_036:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_037:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_038:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_039:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_040:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_041:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_042:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_043:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_044:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_045:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_046:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_047:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_048:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_049:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_050:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_051:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_052:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_053:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_054:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_055:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_056:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_057:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_058:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_059:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_060:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_061:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_062:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_063:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_064:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_065:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_066:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_067:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_068:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_069:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_070:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_071:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_072:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_073:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_074:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_light_075:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_light_076:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_light_077:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_light_078:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_light_079:
+  features: light
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_000:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_001:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_002:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_003:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_004:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_005:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_006:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_007:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_008:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_009:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_010:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_011:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_012:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_013:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_014:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_015:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_016:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_017:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_018:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_019:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 0
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_020:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_021:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_022:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_023:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_024:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_025:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_026:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_027:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_028:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_029:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_030:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_031:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_032:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_033:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_034:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_035:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_036:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_037:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_038:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_039:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 1
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_040:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_041:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_042:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_043:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_044:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_045:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_046:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_047:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_048:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_049:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_050:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_051:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_052:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_053:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_054:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_055:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_056:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_057:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_058:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_059:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 2
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_060:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_061:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_062:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_063:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_064:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 0.5
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_065:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_066:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_067:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_068:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_069:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 1
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_070:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_071:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_072:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_073:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_074:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 2
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
+model_minimal_075:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 0
+model_minimal_076:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 1
+model_minimal_077:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 2
+model_minimal_078:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 3
+model_minimal_079:
+  features: minimal
+  model:
+    hidden_activation: GELU
+    hidden_layers: 3
+    hidden_size_factor: 4
+    output_activation: GELU
+  trainer:
+    max_epochs: 30
+    seed: 4
