@@ -13,6 +13,7 @@ class AggregateModel(pl.LightningModule):
         output_activation="ReLU",
         hidden_layers=0,
         hidden_size_factor=0.5,
+        **kwargs
     ):
         super().__init__()
         self.save_hyperparameters()
@@ -23,7 +24,7 @@ class AggregateModel(pl.LightningModule):
         self.hidden_activation = hidden_activation
         self.output_activation = output_activation
         self.build_model()
-        self.loss_fn = torch.nn.MSELoss(reduction="mean")
+        self.loss_fn = torch.nn.L1Loss(reduction="sum")
         self.lr = lr
 
     def build_model(self):
@@ -89,21 +90,28 @@ class AggregateModel(pl.LightningModule):
     def training_step(self, train_batch, batch_idx):
         loss = self._step(train_batch)
         self.log("train_loss", loss)
+        self.log("train_loss_epoch", loss, on_epoch=True, on_step=False, reduce_fx="sum")
         df_features_train = train_batch[0][0, :, :]
         population = df_features_train[:, 1]
-        self.log(
-            "train_loss_sqrt_per_capita", torch.sqrt(loss) / population.sum()
-        )
+        self.log("train_loss_per_capita", loss / population.sum())
         return loss
 
     def validation_step(self, val_batch, batch_idx):
         loss = self._step(val_batch)
-        self.log("val_loss", loss, prog_bar=True)
+        self.log("val_loss", loss)
+        self.log("val_loss_epoch", loss, on_epoch=True, on_step=False, reduce_fx="sum")
         df_features_val = val_batch[0][0, :, :]
         population = df_features_val[:, 1]
-        self.log(
-            "val_loss_sqrt_per_capita", torch.sqrt(loss) / population.sum()
-        )
+        self.log("val_loss_per_capita", loss / population.sum())
+        return loss
+
+    def test_step(self, test_batch, batch_idx):
+        loss = self._step(test_batch)
+        self.log("test_loss", loss)
+        self.log("test_loss_epoch", loss, on_epoch=True, on_step=False, reduce_fx="sum")
+        df_features_test = test_batch[0][0, :, :]
+        population = df_features_test[:, 1]
+        self.log("test_loss_per_capita", loss / population.sum())
         return loss
 
     def backward(self, loss, optimizer, optimizer_idx):

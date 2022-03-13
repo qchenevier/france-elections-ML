@@ -6,7 +6,7 @@ from pathlib import Path
 import pytorch_lightning as pl
 
 from .aggregate_model import AggregateModel
-from .utils import MasterDataset, train_test_split
+from .utils import MasterDataset, train_val_split
 
 
 def version_name_from_params(params_dict):
@@ -20,11 +20,9 @@ def find_checkpoint(checkpoint_dir):
 
 def train_model(df_features, df_targets, parameters):
     features = parameters.get("features", "minimal")
-    trainer_parameters = parameters.get("trainer", {})
-    seed = trainer_parameters.get("seed", 7)
-    max_epochs = trainer_parameters.get("max_epochs", 10)
-    model_parameters = parameters.get("model", {})
-    version = version_name_from_params(model_parameters)
+    seed = parameters.get("seed", 7)
+    max_epochs = parameters.get("max_epochs", 10)
+    version = version_name_from_params(parameters)
 
     model_dir = "./data/tmp"
     checkpoint_dir = os.path.join(model_dir, features, version)
@@ -36,13 +34,17 @@ def train_model(df_features, df_targets, parameters):
         df_targets_non_null,
         ID_column="code_census_tract",
     )
-    train_loader, test_loader = train_test_split(dataset, test_size=0.1)
+    train_loader, val_loader, test_loader = train_val_split(
+        dataset, val_size=0.1
+    )
 
     not_feature_or_target = ["code_census_tract", "population"]
     n_features = len(set(dataset.features) - set(not_feature_or_target))
     n_targets = len(set(dataset.targets) - set(not_feature_or_target))
     model = AggregateModel(
-        n_features=n_features, n_targets=n_targets, **model_parameters
+        n_features=n_features,
+        n_targets=n_targets,
+        **parameters,
     )
 
     trainer = pl.Trainer(
@@ -59,7 +61,7 @@ def train_model(df_features, df_targets, parameters):
         callbacks=[
             pl.callbacks.ModelCheckpoint(
                 dirpath=checkpoint_dir,
-                monitor="val_loss_sqrt_per_capita",
+                monitor="val_loss_per_capita",
                 mode="min",
                 save_last=False,
                 save_top_k=1,
@@ -69,7 +71,8 @@ def train_model(df_features, df_targets, parameters):
         max_epochs=max_epochs,
         enable_progress_bar=False,  # to prevent neptune logger overflow bug
     )
-    trainer.fit(model, train_loader, test_loader)
+    trainer.fit(model, train_loader, val_loader)
+    trainer.test(model, test_loader)
 
     best_model = AggregateModel.load_from_checkpoint(
         find_checkpoint(checkpoint_dir)

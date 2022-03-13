@@ -152,16 +152,17 @@ class MasterDataset(torch.utils.data.Dataset):
         return self.dataset[i]
 
 
-def train_test_split(dataset, test_size=0.1, num_workers=0):
-    test_len = round(len(dataset) * test_size)
-    train_len = len(dataset) - test_len
-    train_dataset, test_dataset = torch.utils.data.random_split(
-        dataset, [train_len, test_len]
+def train_val_split(dataset, val_size=0.1, num_workers=0):
+    val_len = round(len(dataset) * val_size)
+    train_len = len(dataset) - val_len
+    train_dataset, val_dataset = torch.utils.data.random_split(
+        dataset, [train_len, val_len]
     )
     train_loader = torch.utils.data.DataLoader(
         train_dataset, num_workers=num_workers
     )
-    test_loader = torch.utils.data.DataLoader(
-        test_dataset, num_workers=num_workers
+    val_loader = torch.utils.data.DataLoader(
+        val_dataset, num_workers=num_workers
     )
-    return train_loader, test_loader
+    test_loader = torch.utils.data.DataLoader(dataset, num_workers=num_workers)
+    return train_loader, val_loader, test_loader
