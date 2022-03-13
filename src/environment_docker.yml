@@ -53,6 +53,6 @@ dependencies:
     - topojson
     - py7zr
     - polars
-    - jsonschema[format]<4 # required by kedro neptune
+    - jsonschema[format] # required by kedro neptune
     - unflatten
     
