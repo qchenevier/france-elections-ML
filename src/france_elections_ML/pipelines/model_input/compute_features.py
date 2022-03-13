@@ -130,6 +130,8 @@ def compute_features_list(param_features):
             "type_activite",
         ],
     )
+    if param_features == "zero":
+        return ["sexe"]
     if param_features == "minimal":
         return groups["personal_profile"]
     if param_features == "light":

@@ -84,7 +84,7 @@ census_tract_shape:
   type: geopandas.GeoJSONDataSet
   filepath: s3://france-elections-ml/02_intermediate/census_tract_shape.shp
 
-{% for features in ["minimal", "light", "complex", "full"] %}
+{% for features in ["zero", "minimal", "light", "complex", "full"] %}
 features_{{ features }}:
   type: france_elections_ML.extras.datasets.polars.parquet_dataset.ParquetDataSet
   filepath: s3://france-elections-ml/05_model_input/features_{{ features }}.parquet

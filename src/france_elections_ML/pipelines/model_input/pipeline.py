@@ -25,6 +25,6 @@ def create_pipeline() -> Pipeline:
                 outputs=f"features_{features}",
                 name=f"features_{features}",
             )
-            for features in ["minimal", "light", "complex", "full"]
+            for features in ["zero", "minimal", "light", "complex", "full"]
         ]
     )
