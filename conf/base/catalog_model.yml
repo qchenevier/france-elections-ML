@@ -1,960 +1,162 @@
-model_complex_000:
-  filepath: s3://france-elections-ml/06_models/model_complex_000.pkl
+model_light_seed900_id036:
+  filepath: s3://france-elections-ml/06_models/model_light_seed900_id036.pkl
   type: pickle.PickleDataSet
-model_complex_001:
-  filepath: s3://france-elections-ml/06_models/model_complex_001.pkl
+model_light_seed900_id042:
+  filepath: s3://france-elections-ml/06_models/model_light_seed900_id042.pkl
   type: pickle.PickleDataSet
-model_complex_002:
-  filepath: s3://france-elections-ml/06_models/model_complex_002.pkl
+model_light_seed900_id048:
+  filepath: s3://france-elections-ml/06_models/model_light_seed900_id048.pkl
   type: pickle.PickleDataSet
-model_complex_003:
-  filepath: s3://france-elections-ml/06_models/model_complex_003.pkl
+model_light_seed901_id037:
+  filepath: s3://france-elections-ml/06_models/model_light_seed901_id037.pkl
   type: pickle.PickleDataSet
-model_complex_004:
-  filepath: s3://france-elections-ml/06_models/model_complex_004.pkl
+model_light_seed901_id043:
+  filepath: s3://france-elections-ml/06_models/model_light_seed901_id043.pkl
   type: pickle.PickleDataSet
-model_complex_005:
-  filepath: s3://france-elections-ml/06_models/model_complex_005.pkl
+model_light_seed901_id049:
+  filepath: s3://france-elections-ml/06_models/model_light_seed901_id049.pkl
   type: pickle.PickleDataSet
-model_complex_006:
-  filepath: s3://france-elections-ml/06_models/model_complex_006.pkl
+model_light_seed902_id038:
+  filepath: s3://france-elections-ml/06_models/model_light_seed902_id038.pkl
   type: pickle.PickleDataSet
-model_complex_007:
-  filepath: s3://france-elections-ml/06_models/model_complex_007.pkl
+model_light_seed902_id044:
+  filepath: s3://france-elections-ml/06_models/model_light_seed902_id044.pkl
   type: pickle.PickleDataSet
-model_complex_008:
-  filepath: s3://france-elections-ml/06_models/model_complex_008.pkl
+model_light_seed902_id050:
+  filepath: s3://france-elections-ml/06_models/model_light_seed902_id050.pkl
   type: pickle.PickleDataSet
-model_complex_009:
-  filepath: s3://france-elections-ml/06_models/model_complex_009.pkl
+model_light_seed903_id039:
+  filepath: s3://france-elections-ml/06_models/model_light_seed903_id039.pkl
   type: pickle.PickleDataSet
-model_complex_010:
-  filepath: s3://france-elections-ml/06_models/model_complex_010.pkl
+model_light_seed903_id045:
+  filepath: s3://france-elections-ml/06_models/model_light_seed903_id045.pkl
   type: pickle.PickleDataSet
-model_complex_011:
-  filepath: s3://france-elections-ml/06_models/model_complex_011.pkl
+model_light_seed903_id051:
+  filepath: s3://france-elections-ml/06_models/model_light_seed903_id051.pkl
   type: pickle.PickleDataSet
-model_complex_012:
-  filepath: s3://france-elections-ml/06_models/model_complex_012.pkl
+model_light_seed904_id040:
+  filepath: s3://france-elections-ml/06_models/model_light_seed904_id040.pkl
   type: pickle.PickleDataSet
-model_complex_013:
-  filepath: s3://france-elections-ml/06_models/model_complex_013.pkl
+model_light_seed904_id046:
+  filepath: s3://france-elections-ml/06_models/model_light_seed904_id046.pkl
   type: pickle.PickleDataSet
-model_complex_014:
-  filepath: s3://france-elections-ml/06_models/model_complex_014.pkl
+model_light_seed904_id052:
+  filepath: s3://france-elections-ml/06_models/model_light_seed904_id052.pkl
   type: pickle.PickleDataSet
-model_complex_015:
-  filepath: s3://france-elections-ml/06_models/model_complex_015.pkl
+model_light_seed905_id041:
+  filepath: s3://france-elections-ml/06_models/model_light_seed905_id041.pkl
   type: pickle.PickleDataSet
-model_complex_016:
-  filepath: s3://france-elections-ml/06_models/model_complex_016.pkl
+model_light_seed905_id047:
+  filepath: s3://france-elections-ml/06_models/model_light_seed905_id047.pkl
   type: pickle.PickleDataSet
-model_complex_017:
-  filepath: s3://france-elections-ml/06_models/model_complex_017.pkl
+model_light_seed905_id053:
+  filepath: s3://france-elections-ml/06_models/model_light_seed905_id053.pkl
   type: pickle.PickleDataSet
-model_complex_018:
-  filepath: s3://france-elections-ml/06_models/model_complex_018.pkl
+model_minimal_seed900_id018:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed900_id018.pkl
   type: pickle.PickleDataSet
-model_complex_019:
-  filepath: s3://france-elections-ml/06_models/model_complex_019.pkl
+model_minimal_seed900_id024:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed900_id024.pkl
   type: pickle.PickleDataSet
-model_complex_020:
-  filepath: s3://france-elections-ml/06_models/model_complex_020.pkl
+model_minimal_seed900_id030:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed900_id030.pkl
   type: pickle.PickleDataSet
-model_complex_021:
-  filepath: s3://france-elections-ml/06_models/model_complex_021.pkl
+model_minimal_seed901_id019:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed901_id019.pkl
   type: pickle.PickleDataSet
-model_complex_022:
-  filepath: s3://france-elections-ml/06_models/model_complex_022.pkl
+model_minimal_seed901_id025:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed901_id025.pkl
   type: pickle.PickleDataSet
-model_complex_023:
-  filepath: s3://france-elections-ml/06_models/model_complex_023.pkl
+model_minimal_seed901_id031:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed901_id031.pkl
   type: pickle.PickleDataSet
-model_complex_024:
-  filepath: s3://france-elections-ml/06_models/model_complex_024.pkl
+model_minimal_seed902_id020:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed902_id020.pkl
   type: pickle.PickleDataSet
-model_complex_025:
-  filepath: s3://france-elections-ml/06_models/model_complex_025.pkl
+model_minimal_seed902_id026:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed902_id026.pkl
   type: pickle.PickleDataSet
-model_complex_026:
-  filepath: s3://france-elections-ml/06_models/model_complex_026.pkl
+model_minimal_seed902_id032:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed902_id032.pkl
   type: pickle.PickleDataSet
-model_complex_027:
-  filepath: s3://france-elections-ml/06_models/model_complex_027.pkl
+model_minimal_seed903_id021:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed903_id021.pkl
   type: pickle.PickleDataSet
-model_complex_028:
-  filepath: s3://france-elections-ml/06_models/model_complex_028.pkl
+model_minimal_seed903_id027:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed903_id027.pkl
   type: pickle.PickleDataSet
-model_complex_029:
-  filepath: s3://france-elections-ml/06_models/model_complex_029.pkl
+model_minimal_seed903_id033:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed903_id033.pkl
   type: pickle.PickleDataSet
-model_complex_030:
-  filepath: s3://france-elections-ml/06_models/model_complex_030.pkl
+model_minimal_seed904_id022:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed904_id022.pkl
   type: pickle.PickleDataSet
-model_complex_031:
-  filepath: s3://france-elections-ml/06_models/model_complex_031.pkl
+model_minimal_seed904_id028:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed904_id028.pkl
   type: pickle.PickleDataSet
-model_complex_032:
-  filepath: s3://france-elections-ml/06_models/model_complex_032.pkl
+model_minimal_seed904_id034:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed904_id034.pkl
   type: pickle.PickleDataSet
-model_complex_033:
-  filepath: s3://france-elections-ml/06_models/model_complex_033.pkl
+model_minimal_seed905_id023:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed905_id023.pkl
   type: pickle.PickleDataSet
-model_complex_034:
-  filepath: s3://france-elections-ml/06_models/model_complex_034.pkl
+model_minimal_seed905_id029:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed905_id029.pkl
   type: pickle.PickleDataSet
-model_complex_035:
-  filepath: s3://france-elections-ml/06_models/model_complex_035.pkl
+model_minimal_seed905_id035:
+  filepath: s3://france-elections-ml/06_models/model_minimal_seed905_id035.pkl
   type: pickle.PickleDataSet
-model_complex_036:
-  filepath: s3://france-elections-ml/06_models/model_complex_036.pkl
+model_zero_seed900_id000:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed900_id000.pkl
   type: pickle.PickleDataSet
-model_complex_037:
-  filepath: s3://france-elections-ml/06_models/model_complex_037.pkl
+model_zero_seed900_id006:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed900_id006.pkl
   type: pickle.PickleDataSet
-model_complex_038:
-  filepath: s3://france-elections-ml/06_models/model_complex_038.pkl
+model_zero_seed900_id012:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed900_id012.pkl
   type: pickle.PickleDataSet
-model_complex_039:
-  filepath: s3://france-elections-ml/06_models/model_complex_039.pkl
+model_zero_seed901_id001:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed901_id001.pkl
   type: pickle.PickleDataSet
-model_complex_040:
-  filepath: s3://france-elections-ml/06_models/model_complex_040.pkl
+model_zero_seed901_id007:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed901_id007.pkl
   type: pickle.PickleDataSet
-model_complex_041:
-  filepath: s3://france-elections-ml/06_models/model_complex_041.pkl
+model_zero_seed901_id013:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed901_id013.pkl
   type: pickle.PickleDataSet
-model_complex_042:
-  filepath: s3://france-elections-ml/06_models/model_complex_042.pkl
+model_zero_seed902_id002:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed902_id002.pkl
   type: pickle.PickleDataSet
-model_complex_043:
-  filepath: s3://france-elections-ml/06_models/model_complex_043.pkl
+model_zero_seed902_id008:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed902_id008.pkl
   type: pickle.PickleDataSet
-model_complex_044:
-  filepath: s3://france-elections-ml/06_models/model_complex_044.pkl
+model_zero_seed902_id014:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed902_id014.pkl
   type: pickle.PickleDataSet
-model_complex_045:
-  filepath: s3://france-elections-ml/06_models/model_complex_045.pkl
+model_zero_seed903_id003:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed903_id003.pkl
   type: pickle.PickleDataSet
-model_complex_046:
-  filepath: s3://france-elections-ml/06_models/model_complex_046.pkl
+model_zero_seed903_id009:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed903_id009.pkl
   type: pickle.PickleDataSet
-model_complex_047:
-  filepath: s3://france-elections-ml/06_models/model_complex_047.pkl
+model_zero_seed903_id015:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed903_id015.pkl
   type: pickle.PickleDataSet
-model_complex_048:
-  filepath: s3://france-elections-ml/06_models/model_complex_048.pkl
+model_zero_seed904_id004:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed904_id004.pkl
   type: pickle.PickleDataSet
-model_complex_049:
-  filepath: s3://france-elections-ml/06_models/model_complex_049.pkl
+model_zero_seed904_id010:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed904_id010.pkl
   type: pickle.PickleDataSet
-model_complex_050:
-  filepath: s3://france-elections-ml/06_models/model_complex_050.pkl
+model_zero_seed904_id016:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed904_id016.pkl
   type: pickle.PickleDataSet
-model_complex_051:
-  filepath: s3://france-elections-ml/06_models/model_complex_051.pkl
+model_zero_seed905_id005:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed905_id005.pkl
   type: pickle.PickleDataSet
-model_complex_052:
-  filepath: s3://france-elections-ml/06_models/model_complex_052.pkl
+model_zero_seed905_id011:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed905_id011.pkl
   type: pickle.PickleDataSet
-model_complex_053:
-  filepath: s3://france-elections-ml/06_models/model_complex_053.pkl
-  type: pickle.PickleDataSet
-model_complex_054:
-  filepath: s3://france-elections-ml/06_models/model_complex_054.pkl
-  type: pickle.PickleDataSet
-model_complex_055:
-  filepath: s3://france-elections-ml/06_models/model_complex_055.pkl
-  type: pickle.PickleDataSet
-model_complex_056:
-  filepath: s3://france-elections-ml/06_models/model_complex_056.pkl
-  type: pickle.PickleDataSet
-model_complex_057:
-  filepath: s3://france-elections-ml/06_models/model_complex_057.pkl
-  type: pickle.PickleDataSet
-model_complex_058:
-  filepath: s3://france-elections-ml/06_models/model_complex_058.pkl
-  type: pickle.PickleDataSet
-model_complex_059:
-  filepath: s3://france-elections-ml/06_models/model_complex_059.pkl
-  type: pickle.PickleDataSet
-model_complex_060:
-  filepath: s3://france-elections-ml/06_models/model_complex_060.pkl
-  type: pickle.PickleDataSet
-model_complex_061:
-  filepath: s3://france-elections-ml/06_models/model_complex_061.pkl
-  type: pickle.PickleDataSet
-model_complex_062:
-  filepath: s3://france-elections-ml/06_models/model_complex_062.pkl
-  type: pickle.PickleDataSet
-model_complex_063:
-  filepath: s3://france-elections-ml/06_models/model_complex_063.pkl
-  type: pickle.PickleDataSet
-model_complex_064:
-  filepath: s3://france-elections-ml/06_models/model_complex_064.pkl
-  type: pickle.PickleDataSet
-model_complex_065:
-  filepath: s3://france-elections-ml/06_models/model_complex_065.pkl
-  type: pickle.PickleDataSet
-model_complex_066:
-  filepath: s3://france-elections-ml/06_models/model_complex_066.pkl
-  type: pickle.PickleDataSet
-model_complex_067:
-  filepath: s3://france-elections-ml/06_models/model_complex_067.pkl
-  type: pickle.PickleDataSet
-model_complex_068:
-  filepath: s3://france-elections-ml/06_models/model_complex_068.pkl
-  type: pickle.PickleDataSet
-model_complex_069:
-  filepath: s3://france-elections-ml/06_models/model_complex_069.pkl
-  type: pickle.PickleDataSet
-model_complex_070:
-  filepath: s3://france-elections-ml/06_models/model_complex_070.pkl
-  type: pickle.PickleDataSet
-model_complex_071:
-  filepath: s3://france-elections-ml/06_models/model_complex_071.pkl
-  type: pickle.PickleDataSet
-model_complex_072:
-  filepath: s3://france-elections-ml/06_models/model_complex_072.pkl
-  type: pickle.PickleDataSet
-model_complex_073:
-  filepath: s3://france-elections-ml/06_models/model_complex_073.pkl
-  type: pickle.PickleDataSet
-model_complex_074:
-  filepath: s3://france-elections-ml/06_models/model_complex_074.pkl
-  type: pickle.PickleDataSet
-model_complex_075:
-  filepath: s3://france-elections-ml/06_models/model_complex_075.pkl
-  type: pickle.PickleDataSet
-model_complex_076:
-  filepath: s3://france-elections-ml/06_models/model_complex_076.pkl
-  type: pickle.PickleDataSet
-model_complex_077:
-  filepath: s3://france-elections-ml/06_models/model_complex_077.pkl
-  type: pickle.PickleDataSet
-model_complex_078:
-  filepath: s3://france-elections-ml/06_models/model_complex_078.pkl
-  type: pickle.PickleDataSet
-model_complex_079:
-  filepath: s3://france-elections-ml/06_models/model_complex_079.pkl
-  type: pickle.PickleDataSet
-model_full_000:
-  filepath: s3://france-elections-ml/06_models/model_full_000.pkl
-  type: pickle.PickleDataSet
-model_full_001:
-  filepath: s3://france-elections-ml/06_models/model_full_001.pkl
-  type: pickle.PickleDataSet
-model_full_002:
-  filepath: s3://france-elections-ml/06_models/model_full_002.pkl
-  type: pickle.PickleDataSet
-model_full_003:
-  filepath: s3://france-elections-ml/06_models/model_full_003.pkl
-  type: pickle.PickleDataSet
-model_full_004:
-  filepath: s3://france-elections-ml/06_models/model_full_004.pkl
-  type: pickle.PickleDataSet
-model_full_005:
-  filepath: s3://france-elections-ml/06_models/model_full_005.pkl
-  type: pickle.PickleDataSet
-model_full_006:
-  filepath: s3://france-elections-ml/06_models/model_full_006.pkl
-  type: pickle.PickleDataSet
-model_full_007:
-  filepath: s3://france-elections-ml/06_models/model_full_007.pkl
-  type: pickle.PickleDataSet
-model_full_008:
-  filepath: s3://france-elections-ml/06_models/model_full_008.pkl
-  type: pickle.PickleDataSet
-model_full_009:
-  filepath: s3://france-elections-ml/06_models/model_full_009.pkl
-  type: pickle.PickleDataSet
-model_full_010:
-  filepath: s3://france-elections-ml/06_models/model_full_010.pkl
-  type: pickle.PickleDataSet
-model_full_011:
-  filepath: s3://france-elections-ml/06_models/model_full_011.pkl
-  type: pickle.PickleDataSet
-model_full_012:
-  filepath: s3://france-elections-ml/06_models/model_full_012.pkl
-  type: pickle.PickleDataSet
-model_full_013:
-  filepath: s3://france-elections-ml/06_models/model_full_013.pkl
-  type: pickle.PickleDataSet
-model_full_014:
-  filepath: s3://france-elections-ml/06_models/model_full_014.pkl
-  type: pickle.PickleDataSet
-model_full_015:
-  filepath: s3://france-elections-ml/06_models/model_full_015.pkl
-  type: pickle.PickleDataSet
-model_full_016:
-  filepath: s3://france-elections-ml/06_models/model_full_016.pkl
-  type: pickle.PickleDataSet
-model_full_017:
-  filepath: s3://france-elections-ml/06_models/model_full_017.pkl
-  type: pickle.PickleDataSet
-model_full_018:
-  filepath: s3://france-elections-ml/06_models/model_full_018.pkl
-  type: pickle.PickleDataSet
-model_full_019:
-  filepath: s3://france-elections-ml/06_models/model_full_019.pkl
-  type: pickle.PickleDataSet
-model_full_020:
-  filepath: s3://france-elections-ml/06_models/model_full_020.pkl
-  type: pickle.PickleDataSet
-model_full_021:
-  filepath: s3://france-elections-ml/06_models/model_full_021.pkl
-  type: pickle.PickleDataSet
-model_full_022:
-  filepath: s3://france-elections-ml/06_models/model_full_022.pkl
-  type: pickle.PickleDataSet
-model_full_023:
-  filepath: s3://france-elections-ml/06_models/model_full_023.pkl
-  type: pickle.PickleDataSet
-model_full_024:
-  filepath: s3://france-elections-ml/06_models/model_full_024.pkl
-  type: pickle.PickleDataSet
-model_full_025:
-  filepath: s3://france-elections-ml/06_models/model_full_025.pkl
-  type: pickle.PickleDataSet
-model_full_026:
-  filepath: s3://france-elections-ml/06_models/model_full_026.pkl
-  type: pickle.PickleDataSet
-model_full_027:
-  filepath: s3://france-elections-ml/06_models/model_full_027.pkl
-  type: pickle.PickleDataSet
-model_full_028:
-  filepath: s3://france-elections-ml/06_models/model_full_028.pkl
-  type: pickle.PickleDataSet
-model_full_029:
-  filepath: s3://france-elections-ml/06_models/model_full_029.pkl
-  type: pickle.PickleDataSet
-model_full_030:
-  filepath: s3://france-elections-ml/06_models/model_full_030.pkl
-  type: pickle.PickleDataSet
-model_full_031:
-  filepath: s3://france-elections-ml/06_models/model_full_031.pkl
-  type: pickle.PickleDataSet
-model_full_032:
-  filepath: s3://france-elections-ml/06_models/model_full_032.pkl
-  type: pickle.PickleDataSet
-model_full_033:
-  filepath: s3://france-elections-ml/06_models/model_full_033.pkl
-  type: pickle.PickleDataSet
-model_full_034:
-  filepath: s3://france-elections-ml/06_models/model_full_034.pkl
-  type: pickle.PickleDataSet
-model_full_035:
-  filepath: s3://france-elections-ml/06_models/model_full_035.pkl
-  type: pickle.PickleDataSet
-model_full_036:
-  filepath: s3://france-elections-ml/06_models/model_full_036.pkl
-  type: pickle.PickleDataSet
-model_full_037:
-  filepath: s3://france-elections-ml/06_models/model_full_037.pkl
-  type: pickle.PickleDataSet
-model_full_038:
-  filepath: s3://france-elections-ml/06_models/model_full_038.pkl
-  type: pickle.PickleDataSet
-model_full_039:
-  filepath: s3://france-elections-ml/06_models/model_full_039.pkl
-  type: pickle.PickleDataSet
-model_full_040:
-  filepath: s3://france-elections-ml/06_models/model_full_040.pkl
-  type: pickle.PickleDataSet
-model_full_041:
-  filepath: s3://france-elections-ml/06_models/model_full_041.pkl
-  type: pickle.PickleDataSet
-model_full_042:
-  filepath: s3://france-elections-ml/06_models/model_full_042.pkl
-  type: pickle.PickleDataSet
-model_full_043:
-  filepath: s3://france-elections-ml/06_models/model_full_043.pkl
-  type: pickle.PickleDataSet
-model_full_044:
-  filepath: s3://france-elections-ml/06_models/model_full_044.pkl
-  type: pickle.PickleDataSet
-model_full_045:
-  filepath: s3://france-elections-ml/06_models/model_full_045.pkl
-  type: pickle.PickleDataSet
-model_full_046:
-  filepath: s3://france-elections-ml/06_models/model_full_046.pkl
-  type: pickle.PickleDataSet
-model_full_047:
-  filepath: s3://france-elections-ml/06_models/model_full_047.pkl
-  type: pickle.PickleDataSet
-model_full_048:
-  filepath: s3://france-elections-ml/06_models/model_full_048.pkl
-  type: pickle.PickleDataSet
-model_full_049:
-  filepath: s3://france-elections-ml/06_models/model_full_049.pkl
-  type: pickle.PickleDataSet
-model_full_050:
-  filepath: s3://france-elections-ml/06_models/model_full_050.pkl
-  type: pickle.PickleDataSet
-model_full_051:
-  filepath: s3://france-elections-ml/06_models/model_full_051.pkl
-  type: pickle.PickleDataSet
-model_full_052:
-  filepath: s3://france-elections-ml/06_models/model_full_052.pkl
-  type: pickle.PickleDataSet
-model_full_053:
-  filepath: s3://france-elections-ml/06_models/model_full_053.pkl
-  type: pickle.PickleDataSet
-model_full_054:
-  filepath: s3://france-elections-ml/06_models/model_full_054.pkl
-  type: pickle.PickleDataSet
-model_full_055:
-  filepath: s3://france-elections-ml/06_models/model_full_055.pkl
-  type: pickle.PickleDataSet
-model_full_056:
-  filepath: s3://france-elections-ml/06_models/model_full_056.pkl
-  type: pickle.PickleDataSet
-model_full_057:
-  filepath: s3://france-elections-ml/06_models/model_full_057.pkl
-  type: pickle.PickleDataSet
-model_full_058:
-  filepath: s3://france-elections-ml/06_models/model_full_058.pkl
-  type: pickle.PickleDataSet
-model_full_059:
-  filepath: s3://france-elections-ml/06_models/model_full_059.pkl
-  type: pickle.PickleDataSet
-model_full_060:
-  filepath: s3://france-elections-ml/06_models/model_full_060.pkl
-  type: pickle.PickleDataSet
-model_full_061:
-  filepath: s3://france-elections-ml/06_models/model_full_061.pkl
-  type: pickle.PickleDataSet
-model_full_062:
-  filepath: s3://france-elections-ml/06_models/model_full_062.pkl
-  type: pickle.PickleDataSet
-model_full_063:
-  filepath: s3://france-elections-ml/06_models/model_full_063.pkl
-  type: pickle.PickleDataSet
-model_full_064:
-  filepath: s3://france-elections-ml/06_models/model_full_064.pkl
-  type: pickle.PickleDataSet
-model_full_065:
-  filepath: s3://france-elections-ml/06_models/model_full_065.pkl
-  type: pickle.PickleDataSet
-model_full_066:
-  filepath: s3://france-elections-ml/06_models/model_full_066.pkl
-  type: pickle.PickleDataSet
-model_full_067:
-  filepath: s3://france-elections-ml/06_models/model_full_067.pkl
-  type: pickle.PickleDataSet
-model_full_068:
-  filepath: s3://france-elections-ml/06_models/model_full_068.pkl
-  type: pickle.PickleDataSet
-model_full_069:
-  filepath: s3://france-elections-ml/06_models/model_full_069.pkl
-  type: pickle.PickleDataSet
-model_full_070:
-  filepath: s3://france-elections-ml/06_models/model_full_070.pkl
-  type: pickle.PickleDataSet
-model_full_071:
-  filepath: s3://france-elections-ml/06_models/model_full_071.pkl
-  type: pickle.PickleDataSet
-model_full_072:
-  filepath: s3://france-elections-ml/06_models/model_full_072.pkl
-  type: pickle.PickleDataSet
-model_full_073:
-  filepath: s3://france-elections-ml/06_models/model_full_073.pkl
-  type: pickle.PickleDataSet
-model_full_074:
-  filepath: s3://france-elections-ml/06_models/model_full_074.pkl
-  type: pickle.PickleDataSet
-model_full_075:
-  filepath: s3://france-elections-ml/06_models/model_full_075.pkl
-  type: pickle.PickleDataSet
-model_full_076:
-  filepath: s3://france-elections-ml/06_models/model_full_076.pkl
-  type: pickle.PickleDataSet
-model_full_077:
-  filepath: s3://france-elections-ml/06_models/model_full_077.pkl
-  type: pickle.PickleDataSet
-model_full_078:
-  filepath: s3://france-elections-ml/06_models/model_full_078.pkl
-  type: pickle.PickleDataSet
-model_full_079:
-  filepath: s3://france-elections-ml/06_models/model_full_079.pkl
-  type: pickle.PickleDataSet
-model_light_000:
-  filepath: s3://france-elections-ml/06_models/model_light_000.pkl
-  type: pickle.PickleDataSet
-model_light_001:
-  filepath: s3://france-elections-ml/06_models/model_light_001.pkl
-  type: pickle.PickleDataSet
-model_light_002:
-  filepath: s3://france-elections-ml/06_models/model_light_002.pkl
-  type: pickle.PickleDataSet
-model_light_003:
-  filepath: s3://france-elections-ml/06_models/model_light_003.pkl
-  type: pickle.PickleDataSet
-model_light_004:
-  filepath: s3://france-elections-ml/06_models/model_light_004.pkl
-  type: pickle.PickleDataSet
-model_light_005:
-  filepath: s3://france-elections-ml/06_models/model_light_005.pkl
-  type: pickle.PickleDataSet
-model_light_006:
-  filepath: s3://france-elections-ml/06_models/model_light_006.pkl
-  type: pickle.PickleDataSet
-model_light_007:
-  filepath: s3://france-elections-ml/06_models/model_light_007.pkl
-  type: pickle.PickleDataSet
-model_light_008:
-  filepath: s3://france-elections-ml/06_models/model_light_008.pkl
-  type: pickle.PickleDataSet
-model_light_009:
-  filepath: s3://france-elections-ml/06_models/model_light_009.pkl
-  type: pickle.PickleDataSet
-model_light_010:
-  filepath: s3://france-elections-ml/06_models/model_light_010.pkl
-  type: pickle.PickleDataSet
-model_light_011:
-  filepath: s3://france-elections-ml/06_models/model_light_011.pkl
-  type: pickle.PickleDataSet
-model_light_012:
-  filepath: s3://france-elections-ml/06_models/model_light_012.pkl
-  type: pickle.PickleDataSet
-model_light_013:
-  filepath: s3://france-elections-ml/06_models/model_light_013.pkl
-  type: pickle.PickleDataSet
-model_light_014:
-  filepath: s3://france-elections-ml/06_models/model_light_014.pkl
-  type: pickle.PickleDataSet
-model_light_015:
-  filepath: s3://france-elections-ml/06_models/model_light_015.pkl
-  type: pickle.PickleDataSet
-model_light_016:
-  filepath: s3://france-elections-ml/06_models/model_light_016.pkl
-  type: pickle.PickleDataSet
-model_light_017:
-  filepath: s3://france-elections-ml/06_models/model_light_017.pkl
-  type: pickle.PickleDataSet
-model_light_018:
-  filepath: s3://france-elections-ml/06_models/model_light_018.pkl
-  type: pickle.PickleDataSet
-model_light_019:
-  filepath: s3://france-elections-ml/06_models/model_light_019.pkl
-  type: pickle.PickleDataSet
-model_light_020:
-  filepath: s3://france-elections-ml/06_models/model_light_020.pkl
-  type: pickle.PickleDataSet
-model_light_021:
-  filepath: s3://france-elections-ml/06_models/model_light_021.pkl
-  type: pickle.PickleDataSet
-model_light_022:
-  filepath: s3://france-elections-ml/06_models/model_light_022.pkl
-  type: pickle.PickleDataSet
-model_light_023:
-  filepath: s3://france-elections-ml/06_models/model_light_023.pkl
-  type: pickle.PickleDataSet
-model_light_024:
-  filepath: s3://france-elections-ml/06_models/model_light_024.pkl
-  type: pickle.PickleDataSet
-model_light_025:
-  filepath: s3://france-elections-ml/06_models/model_light_025.pkl
-  type: pickle.PickleDataSet
-model_light_026:
-  filepath: s3://france-elections-ml/06_models/model_light_026.pkl
-  type: pickle.PickleDataSet
-model_light_027:
-  filepath: s3://france-elections-ml/06_models/model_light_027.pkl
-  type: pickle.PickleDataSet
-model_light_028:
-  filepath: s3://france-elections-ml/06_models/model_light_028.pkl
-  type: pickle.PickleDataSet
-model_light_029:
-  filepath: s3://france-elections-ml/06_models/model_light_029.pkl
-  type: pickle.PickleDataSet
-model_light_030:
-  filepath: s3://france-elections-ml/06_models/model_light_030.pkl
-  type: pickle.PickleDataSet
-model_light_031:
-  filepath: s3://france-elections-ml/06_models/model_light_031.pkl
-  type: pickle.PickleDataSet
-model_light_032:
-  filepath: s3://france-elections-ml/06_models/model_light_032.pkl
-  type: pickle.PickleDataSet
-model_light_033:
-  filepath: s3://france-elections-ml/06_models/model_light_033.pkl
-  type: pickle.PickleDataSet
-model_light_034:
-  filepath: s3://france-elections-ml/06_models/model_light_034.pkl
-  type: pickle.PickleDataSet
-model_light_035:
-  filepath: s3://france-elections-ml/06_models/model_light_035.pkl
-  type: pickle.PickleDataSet
-model_light_036:
-  filepath: s3://france-elections-ml/06_models/model_light_036.pkl
-  type: pickle.PickleDataSet
-model_light_037:
-  filepath: s3://france-elections-ml/06_models/model_light_037.pkl
-  type: pickle.PickleDataSet
-model_light_038:
-  filepath: s3://france-elections-ml/06_models/model_light_038.pkl
-  type: pickle.PickleDataSet
-model_light_039:
-  filepath: s3://france-elections-ml/06_models/model_light_039.pkl
-  type: pickle.PickleDataSet
-model_light_040:
-  filepath: s3://france-elections-ml/06_models/model_light_040.pkl
-  type: pickle.PickleDataSet
-model_light_041:
-  filepath: s3://france-elections-ml/06_models/model_light_041.pkl
-  type: pickle.PickleDataSet
-model_light_042:
-  filepath: s3://france-elections-ml/06_models/model_light_042.pkl
-  type: pickle.PickleDataSet
-model_light_043:
-  filepath: s3://france-elections-ml/06_models/model_light_043.pkl
-  type: pickle.PickleDataSet
-model_light_044:
-  filepath: s3://france-elections-ml/06_models/model_light_044.pkl
-  type: pickle.PickleDataSet
-model_light_045:
-  filepath: s3://france-elections-ml/06_models/model_light_045.pkl
-  type: pickle.PickleDataSet
-model_light_046:
-  filepath: s3://france-elections-ml/06_models/model_light_046.pkl
-  type: pickle.PickleDataSet
-model_light_047:
-  filepath: s3://france-elections-ml/06_models/model_light_047.pkl
-  type: pickle.PickleDataSet
-model_light_048:
-  filepath: s3://france-elections-ml/06_models/model_light_048.pkl
-  type: pickle.PickleDataSet
-model_light_049:
-  filepath: s3://france-elections-ml/06_models/model_light_049.pkl
-  type: pickle.PickleDataSet
-model_light_050:
-  filepath: s3://france-elections-ml/06_models/model_light_050.pkl
-  type: pickle.PickleDataSet
-model_light_051:
-  filepath: s3://france-elections-ml/06_models/model_light_051.pkl
-  type: pickle.PickleDataSet
-model_light_052:
-  filepath: s3://france-elections-ml/06_models/model_light_052.pkl
-  type: pickle.PickleDataSet
-model_light_053:
-  filepath: s3://france-elections-ml/06_models/model_light_053.pkl
-  type: pickle.PickleDataSet
-model_light_054:
-  filepath: s3://france-elections-ml/06_models/model_light_054.pkl
-  type: pickle.PickleDataSet
-model_light_055:
-  filepath: s3://france-elections-ml/06_models/model_light_055.pkl
-  type: pickle.PickleDataSet
-model_light_056:
-  filepath: s3://france-elections-ml/06_models/model_light_056.pkl
-  type: pickle.PickleDataSet
-model_light_057:
-  filepath: s3://france-elections-ml/06_models/model_light_057.pkl
-  type: pickle.PickleDataSet
-model_light_058:
-  filepath: s3://france-elections-ml/06_models/model_light_058.pkl
-  type: pickle.PickleDataSet
-model_light_059:
-  filepath: s3://france-elections-ml/06_models/model_light_059.pkl
-  type: pickle.PickleDataSet
-model_light_060:
-  filepath: s3://france-elections-ml/06_models/model_light_060.pkl
-  type: pickle.PickleDataSet
-model_light_061:
-  filepath: s3://france-elections-ml/06_models/model_light_061.pkl
-  type: pickle.PickleDataSet
-model_light_062:
-  filepath: s3://france-elections-ml/06_models/model_light_062.pkl
-  type: pickle.PickleDataSet
-model_light_063:
-  filepath: s3://france-elections-ml/06_models/model_light_063.pkl
-  type: pickle.PickleDataSet
-model_light_064:
-  filepath: s3://france-elections-ml/06_models/model_light_064.pkl
-  type: pickle.PickleDataSet
-model_light_065:
-  filepath: s3://france-elections-ml/06_models/model_light_065.pkl
-  type: pickle.PickleDataSet
-model_light_066:
-  filepath: s3://france-elections-ml/06_models/model_light_066.pkl
-  type: pickle.PickleDataSet
-model_light_067:
-  filepath: s3://france-elections-ml/06_models/model_light_067.pkl
-  type: pickle.PickleDataSet
-model_light_068:
-  filepath: s3://france-elections-ml/06_models/model_light_068.pkl
-  type: pickle.PickleDataSet
-model_light_069:
-  filepath: s3://france-elections-ml/06_models/model_light_069.pkl
-  type: pickle.PickleDataSet
-model_light_070:
-  filepath: s3://france-elections-ml/06_models/model_light_070.pkl
-  type: pickle.PickleDataSet
-model_light_071:
-  filepath: s3://france-elections-ml/06_models/model_light_071.pkl
-  type: pickle.PickleDataSet
-model_light_072:
-  filepath: s3://france-elections-ml/06_models/model_light_072.pkl
-  type: pickle.PickleDataSet
-model_light_073:
-  filepath: s3://france-elections-ml/06_models/model_light_073.pkl
-  type: pickle.PickleDataSet
-model_light_074:
-  filepath: s3://france-elections-ml/06_models/model_light_074.pkl
-  type: pickle.PickleDataSet
-model_light_075:
-  filepath: s3://france-elections-ml/06_models/model_light_075.pkl
-  type: pickle.PickleDataSet
-model_light_076:
-  filepath: s3://france-elections-ml/06_models/model_light_076.pkl
-  type: pickle.PickleDataSet
-model_light_077:
-  filepath: s3://france-elections-ml/06_models/model_light_077.pkl
-  type: pickle.PickleDataSet
-model_light_078:
-  filepath: s3://france-elections-ml/06_models/model_light_078.pkl
-  type: pickle.PickleDataSet
-model_light_079:
-  filepath: s3://france-elections-ml/06_models/model_light_079.pkl
-  type: pickle.PickleDataSet
-model_minimal_000:
-  filepath: s3://france-elections-ml/06_models/model_minimal_000.pkl
-  type: pickle.PickleDataSet
-model_minimal_001:
-  filepath: s3://france-elections-ml/06_models/model_minimal_001.pkl
-  type: pickle.PickleDataSet
-model_minimal_002:
-  filepath: s3://france-elections-ml/06_models/model_minimal_002.pkl
-  type: pickle.PickleDataSet
-model_minimal_003:
-  filepath: s3://france-elections-ml/06_models/model_minimal_003.pkl
-  type: pickle.PickleDataSet
-model_minimal_004:
-  filepath: s3://france-elections-ml/06_models/model_minimal_004.pkl
-  type: pickle.PickleDataSet
-model_minimal_005:
-  filepath: s3://france-elections-ml/06_models/model_minimal_005.pkl
-  type: pickle.PickleDataSet
-model_minimal_006:
-  filepath: s3://france-elections-ml/06_models/model_minimal_006.pkl
-  type: pickle.PickleDataSet
-model_minimal_007:
-  filepath: s3://france-elections-ml/06_models/model_minimal_007.pkl
-  type: pickle.PickleDataSet
-model_minimal_008:
-  filepath: s3://france-elections-ml/06_models/model_minimal_008.pkl
-  type: pickle.PickleDataSet
-model_minimal_009:
-  filepath: s3://france-elections-ml/06_models/model_minimal_009.pkl
-  type: pickle.PickleDataSet
-model_minimal_010:
-  filepath: s3://france-elections-ml/06_models/model_minimal_010.pkl
-  type: pickle.PickleDataSet
-model_minimal_011:
-  filepath: s3://france-elections-ml/06_models/model_minimal_011.pkl
-  type: pickle.PickleDataSet
-model_minimal_012:
-  filepath: s3://france-elections-ml/06_models/model_minimal_012.pkl
-  type: pickle.PickleDataSet
-model_minimal_013:
-  filepath: s3://france-elections-ml/06_models/model_minimal_013.pkl
-  type: pickle.PickleDataSet
-model_minimal_014:
-  filepath: s3://france-elections-ml/06_models/model_minimal_014.pkl
-  type: pickle.PickleDataSet
-model_minimal_015:
-  filepath: s3://france-elections-ml/06_models/model_minimal_015.pkl
-  type: pickle.PickleDataSet
-model_minimal_016:
-  filepath: s3://france-elections-ml/06_models/model_minimal_016.pkl
-  type: pickle.PickleDataSet
-model_minimal_017:
-  filepath: s3://france-elections-ml/06_models/model_minimal_017.pkl
-  type: pickle.PickleDataSet
-model_minimal_018:
-  filepath: s3://france-elections-ml/06_models/model_minimal_018.pkl
-  type: pickle.PickleDataSet
-model_minimal_019:
-  filepath: s3://france-elections-ml/06_models/model_minimal_019.pkl
-  type: pickle.PickleDataSet
-model_minimal_020:
-  filepath: s3://france-elections-ml/06_models/model_minimal_020.pkl
-  type: pickle.PickleDataSet
-model_minimal_021:
-  filepath: s3://france-elections-ml/06_models/model_minimal_021.pkl
-  type: pickle.PickleDataSet
-model_minimal_022:
-  filepath: s3://france-elections-ml/06_models/model_minimal_022.pkl
-  type: pickle.PickleDataSet
-model_minimal_023:
-  filepath: s3://france-elections-ml/06_models/model_minimal_023.pkl
-  type: pickle.PickleDataSet
-model_minimal_024:
-  filepath: s3://france-elections-ml/06_models/model_minimal_024.pkl
-  type: pickle.PickleDataSet
-model_minimal_025:
-  filepath: s3://france-elections-ml/06_models/model_minimal_025.pkl
-  type: pickle.PickleDataSet
-model_minimal_026:
-  filepath: s3://france-elections-ml/06_models/model_minimal_026.pkl
-  type: pickle.PickleDataSet
-model_minimal_027:
-  filepath: s3://france-elections-ml/06_models/model_minimal_027.pkl
-  type: pickle.PickleDataSet
-model_minimal_028:
-  filepath: s3://france-elections-ml/06_models/model_minimal_028.pkl
-  type: pickle.PickleDataSet
-model_minimal_029:
-  filepath: s3://france-elections-ml/06_models/model_minimal_029.pkl
-  type: pickle.PickleDataSet
-model_minimal_030:
-  filepath: s3://france-elections-ml/06_models/model_minimal_030.pkl
-  type: pickle.PickleDataSet
-model_minimal_031:
-  filepath: s3://france-elections-ml/06_models/model_minimal_031.pkl
-  type: pickle.PickleDataSet
-model_minimal_032:
-  filepath: s3://france-elections-ml/06_models/model_minimal_032.pkl
-  type: pickle.PickleDataSet
-model_minimal_033:
-  filepath: s3://france-elections-ml/06_models/model_minimal_033.pkl
-  type: pickle.PickleDataSet
-model_minimal_034:
-  filepath: s3://france-elections-ml/06_models/model_minimal_034.pkl
-  type: pickle.PickleDataSet
-model_minimal_035:
-  filepath: s3://france-elections-ml/06_models/model_minimal_035.pkl
-  type: pickle.PickleDataSet
-model_minimal_036:
-  filepath: s3://france-elections-ml/06_models/model_minimal_036.pkl
-  type: pickle.PickleDataSet
-model_minimal_037:
-  filepath: s3://france-elections-ml/06_models/model_minimal_037.pkl
-  type: pickle.PickleDataSet
-model_minimal_038:
-  filepath: s3://france-elections-ml/06_models/model_minimal_038.pkl
-  type: pickle.PickleDataSet
-model_minimal_039:
-  filepath: s3://france-elections-ml/06_models/model_minimal_039.pkl
-  type: pickle.PickleDataSet
-model_minimal_040:
-  filepath: s3://france-elections-ml/06_models/model_minimal_040.pkl
-  type: pickle.PickleDataSet
-model_minimal_041:
-  filepath: s3://france-elections-ml/06_models/model_minimal_041.pkl
-  type: pickle.PickleDataSet
-model_minimal_042:
-  filepath: s3://france-elections-ml/06_models/model_minimal_042.pkl
-  type: pickle.PickleDataSet
-model_minimal_043:
-  filepath: s3://france-elections-ml/06_models/model_minimal_043.pkl
-  type: pickle.PickleDataSet
-model_minimal_044:
-  filepath: s3://france-elections-ml/06_models/model_minimal_044.pkl
-  type: pickle.PickleDataSet
-model_minimal_045:
-  filepath: s3://france-elections-ml/06_models/model_minimal_045.pkl
-  type: pickle.PickleDataSet
-model_minimal_046:
-  filepath: s3://france-elections-ml/06_models/model_minimal_046.pkl
-  type: pickle.PickleDataSet
-model_minimal_047:
-  filepath: s3://france-elections-ml/06_models/model_minimal_047.pkl
-  type: pickle.PickleDataSet
-model_minimal_048:
-  filepath: s3://france-elections-ml/06_models/model_minimal_048.pkl
-  type: pickle.PickleDataSet
-model_minimal_049:
-  filepath: s3://france-elections-ml/06_models/model_minimal_049.pkl
-  type: pickle.PickleDataSet
-model_minimal_050:
-  filepath: s3://france-elections-ml/06_models/model_minimal_050.pkl
-  type: pickle.PickleDataSet
-model_minimal_051:
-  filepath: s3://france-elections-ml/06_models/model_minimal_051.pkl
-  type: pickle.PickleDataSet
-model_minimal_052:
-  filepath: s3://france-elections-ml/06_models/model_minimal_052.pkl
-  type: pickle.PickleDataSet
-model_minimal_053:
-  filepath: s3://france-elections-ml/06_models/model_minimal_053.pkl
-  type: pickle.PickleDataSet
-model_minimal_054:
-  filepath: s3://france-elections-ml/06_models/model_minimal_054.pkl
-  type: pickle.PickleDataSet
-model_minimal_055:
-  filepath: s3://france-elections-ml/06_models/model_minimal_055.pkl
-  type: pickle.PickleDataSet
-model_minimal_056:
-  filepath: s3://france-elections-ml/06_models/model_minimal_056.pkl
-  type: pickle.PickleDataSet
-model_minimal_057:
-  filepath: s3://france-elections-ml/06_models/model_minimal_057.pkl
-  type: pickle.PickleDataSet
-model_minimal_058:
-  filepath: s3://france-elections-ml/06_models/model_minimal_058.pkl
-  type: pickle.PickleDataSet
-model_minimal_059:
-  filepath: s3://france-elections-ml/06_models/model_minimal_059.pkl
-  type: pickle.PickleDataSet
-model_minimal_060:
-  filepath: s3://france-elections-ml/06_models/model_minimal_060.pkl
-  type: pickle.PickleDataSet
-model_minimal_061:
-  filepath: s3://france-elections-ml/06_models/model_minimal_061.pkl
-  type: pickle.PickleDataSet
-model_minimal_062:
-  filepath: s3://france-elections-ml/06_models/model_minimal_062.pkl
-  type: pickle.PickleDataSet
-model_minimal_063:
-  filepath: s3://france-elections-ml/06_models/model_minimal_063.pkl
-  type: pickle.PickleDataSet
-model_minimal_064:
-  filepath: s3://france-elections-ml/06_models/model_minimal_064.pkl
-  type: pickle.PickleDataSet
-model_minimal_065:
-  filepath: s3://france-elections-ml/06_models/model_minimal_065.pkl
-  type: pickle.PickleDataSet
-model_minimal_066:
-  filepath: s3://france-elections-ml/06_models/model_minimal_066.pkl
-  type: pickle.PickleDataSet
-model_minimal_067:
-  filepath: s3://france-elections-ml/06_models/model_minimal_067.pkl
-  type: pickle.PickleDataSet
-model_minimal_068:
-  filepath: s3://france-elections-ml/06_models/model_minimal_068.pkl
-  type: pickle.PickleDataSet
-model_minimal_069:
-  filepath: s3://france-elections-ml/06_models/model_minimal_069.pkl
-  type: pickle.PickleDataSet
-model_minimal_070:
-  filepath: s3://france-elections-ml/06_models/model_minimal_070.pkl
-  type: pickle.PickleDataSet
-model_minimal_071:
-  filepath: s3://france-elections-ml/06_models/model_minimal_071.pkl
-  type: pickle.PickleDataSet
-model_minimal_072:
-  filepath: s3://france-elections-ml/06_models/model_minimal_072.pkl
-  type: pickle.PickleDataSet
-model_minimal_073:
-  filepath: s3://france-elections-ml/06_models/model_minimal_073.pkl
-  type: pickle.PickleDataSet
-model_minimal_074:
-  filepath: s3://france-elections-ml/06_models/model_minimal_074.pkl
-  type: pickle.PickleDataSet
-model_minimal_075:
-  filepath: s3://france-elections-ml/06_models/model_minimal_075.pkl
-  type: pickle.PickleDataSet
-model_minimal_076:
-  filepath: s3://france-elections-ml/06_models/model_minimal_076.pkl
-  type: pickle.PickleDataSet
-model_minimal_077:
-  filepath: s3://france-elections-ml/06_models/model_minimal_077.pkl
-  type: pickle.PickleDataSet
-model_minimal_078:
-  filepath: s3://france-elections-ml/06_models/model_minimal_078.pkl
-  type: pickle.PickleDataSet
-model_minimal_079:
-  filepath: s3://france-elections-ml/06_models/model_minimal_079.pkl
+model_zero_seed905_id017:
+  filepath: s3://france-elections-ml/06_models/model_zero_seed905_id017.pkl
   type: pickle.PickleDataSet

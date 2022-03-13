@@ -6,28 +6,30 @@ from unflatten import unflatten
 
 
 def model_name(params, i, N):
-    return f"model_{params['features']}_{i % N:03d}"
+    return f"model_{params['features']}_seed{params['seed']}_id{i:03d}"
 
 
-params_grid = list(
-    ParameterGrid(
-        {
-            "features": ["minimal", "light", "complex", "full"],
-            "trainer.seed": range(5),
-            "trainer.max_epochs": [30],
-            "model.hidden_layers": range(4),
-            "model.hidden_size_factor": [0.5, 1, 2, 4],
-            "model.output_activation": ["GELU"],
-            "model.hidden_activation": ["GELU"],
-        }
-    )
+grid_dimensions = {
+    "features": ["zero", "minimal", "light"],
+    "seed": list(range(900, 900 + 6)),
+    "max_epochs": [1000],
+    "hidden_layers": [1],
+    "hidden_size_factor": [0.5, 0.7, 0.9],
+    "output_activation": ["Softplus"],
+    "hidden_activation": ["GELU"],
+}
+
+grid = list(ParameterGrid(grid_dimensions))
+
+N = int(
+    len(grid) / len(grid_dimensions["features"]) / len(grid_dimensions["seed"])
 )
 
-N = int(len(params_grid) / 4)
-
 params_dict = {
-    model_name(params, i, N): unflatten(params)
-    for i, params in enumerate(params_grid)
+    model_name(params, i, N): dict(
+        **unflatten(params), model_name=model_name(params, i, N)
+    )
+    for i, params in enumerate(grid)
 }
 
 catalog_dict_local = {
@@ -35,7 +37,7 @@ catalog_dict_local = {
         "type": "pickle.PickleDataSet",
         "filepath": f"data/06_models/{model_name(params, i, N)}.pkl",
     }
-    for i, params in enumerate(params_grid)
+    for i, params in enumerate(grid)
 }
 
 catalog_dict_base = {
@@ -43,7 +45,7 @@ catalog_dict_base = {
         "type": "pickle.PickleDataSet",
         "filepath": f"s3://france-elections-ml/06_models/{model_name(params, i, N)}.pkl",
     }
-    for i, params in enumerate(params_grid)
+    for i, params in enumerate(grid)
 }
 
 if __name__ == "__main__":
@@ -55,6 +57,3 @@ if __name__ == "__main__":
 
     with open(conf / "base" / "catalog_model.yml", "w") as f:
         yaml.dump(catalog_dict_base, f)
-
-    with open(conf / "local" / "catalog_model.yml", "w") as f:
-        yaml.dump(catalog_dict_local, f)
