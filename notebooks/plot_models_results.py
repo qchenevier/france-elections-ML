@@ -4,10 +4,7 @@ import re
 
 import pandas as pd
 import polars as pl
-import numpy as np
 import torch
-from anchor import anchor_tabular
-from tqdm import tqdm
 
 from kedro.extras.extensions.ipython import reload_kedro
 import plotly.express as px
@@ -231,7 +228,90 @@ def compute_residuals_long(residuals_per_target):
     )
 
 
+def compute_facet_params(
+    model_selection, target_selection, plot_size=250, legend_size=100
+):
+    color_discrete_map = {
+        "inscrits": "white",
+        "voix": "palegreen",
+        "gauche": "tomato",
+        "droite": "dodgerblue",
+        "autre": "#ffec80",
+    }
+    target_orders = {
+        "target_name": target_selection,
+        "target_or_model": model_selection,
+    }
+    width = plot_size * (len(model_selection) + 1) + legend_size
+    height = plot_size * len(target_selection)
+    return dict(
+        template="plotly_dark",
+        facet_col="target_or_model",
+        facet_row="target_name",
+        color="target_name",
+        color_discrete_map=color_discrete_map,
+        category_orders=target_orders,
+        width=width,
+        height=height,
+    )
+
+
+def plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    model_selection,
+    target_selection,
+):
+    facet_kwargs = compute_facet_params(model_selection, target_selection)
+    fig = (
+        (targets_and_predictions_long)
+        .loc[lambda df: df.target_or_model.isin(model_selection)]
+        .loc[lambda df: df.target_name.isin(target_selection)]
+        .merge(densite_population, on="code_census_tract")
+        .assign(value_per_capita=lambda df: df.value / df.population)
+        .plot(
+            kind="scatter",
+            x="densite_lognorm",
+            y="value_per_capita",
+            size="population",
+            opacity=0.5,
+            log_y=True,
+            **facet_kwargs,
+        )
+    )
+    fig.update_xaxes(
+        showticklabels=True,
+    )
+    return fig
+
+
+def plot_residuals(
+    residuals_long, densite_population, model_selection, target_selection
+):
+    facet_kwargs = compute_facet_params(model_selection, target_selection)
+    fig = (
+        (residuals_long)
+        .loc[lambda df: df.target_or_model.isin(model_selection)]
+        .loc[lambda df: df.target_name.isin(target_selection)]
+        .merge(densite_population, on="code_census_tract")
+        .plot(
+            kind="scatter",
+            x="densite_lognorm",
+            y="value_ratio",
+            size="population",
+            opacity=0.5,
+            log_y=True,
+            **facet_kwargs,
+        )
+    )
+    fig.update_xaxes(
+        showticklabels=True,
+    )
+    return fig
+
+
 # %%
+pd.options.plotting.backend = "plotly"
 startup_path = Path.cwd()
 project_path = startup_path.parent
 reload_kedro(project_path)
@@ -256,31 +336,7 @@ features = runs[0]["features"]
 densite_population = compute_densite_population_from_features(features)
 
 # %%
-pd.options.plotting.backend = "plotly"
-color_discrete_map = {
-    "inscrits": "white",
-    "voix": "palegreen",
-    "gauche": "tomato",
-    "droite": "dodgerblue",
-    "autre": "#ffec80",
-}
-targets_to_plot = ["inscrits", "voix", "gauche", "droite", "autre"]
-target_orders = {"target_name": targets_to_plot}
-plot_size = 250
-legend_size = 100
-
-# %%
-model_selection = [
-    "model_light_seed902_id044",
-    "model_light_seed903_id045",
-    "model_minimal_seed904_id022",
-    "model_minimal_seed903_id033",
-    "model_zero_seed904_id010",
-    "model_zero_seed904_id016",
-]
-targets_and_predictions = compute_targets_and_predictions(
-    targets, runs, model_selection=model_selection
-)
+targets_and_predictions = compute_targets_and_predictions(targets, runs)
 targets_and_predictions_long = compute_targets_and_predictions_long(
     targets_and_predictions
 )
@@ -293,63 +349,60 @@ residuals_per_target = compute_residuals_per_target(
 residuals_long = compute_residuals_long(residuals_per_target)
 
 # %%
-width = plot_size * (len(model_selection) + 1) + legend_size
-height = plot_size * len(targets_to_plot)
-facet_kwargs = dict(
-    template="plotly_dark",
-    facet_col="target_or_model",
-    facet_row="target_name",
-    color="target_name",
-    color_discrete_map=color_discrete_map,
-    category_orders=target_orders,
-    width=width,
-    height=height,
+target_selection = ["inscrits", "voix", "gauche", "droite", "autre"]
+model_selection = [
+    "target",
+    "model_light_seed902_id044",
+    "model_light_seed903_id045",
+    "model_minimal_seed904_id022",
+    "model_minimal_seed903_id033",
+    "model_zero_seed904_id010",
+    "model_zero_seed904_id016",
+]
+
+# %%
+plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    model_selection,
+    target_selection,
 )
 
 # %%
-fig = (
-    (targets_and_predictions_long)
-    .merge(densite_population, on="code_census_tract")
-    .assign(value_per_capita=lambda df: df.value / df.population)
-    .plot(
-        kind="scatter",
-        x="densite_lognorm",
-        y="value_per_capita",
-        size="population",
-        opacity=0.5,
-        log_y=True,
-        **facet_kwargs,
-    )
-)
-fig.update_xaxes(
-    showticklabels=True,
+plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    model_selection,
+    target_selection[:2],
 )
 
 # %%
-fig = (
-    (residuals_long)
-    .merge(densite_population, on="code_census_tract")
-    .plot(
-        kind="scatter",
-        x="densite_lognorm",
-        y="value_ratio",
-        size="population",
-        opacity=0.5,
-        log_y=True,
-        **facet_kwargs,
-    )
+plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    model_selection,
+    target_selection[2:],
 )
-fig.update_xaxes(
-    showticklabels=True,
+
+# %%
+plot_residuals(
+    residuals_long, densite_population, model_selection, target_selection
+)
+
+# %%
+plot_residuals(
+    residuals_long, densite_population, model_selection, target_selection[:2]
+)
+
+# %%
+plot_residuals(
+    residuals_long, densite_population, model_selection, target_selection[2:]
 )
 
 # %%
 (
-    targets_and_predictions_per_target.drop(
-        ["code_census_tract", "target"], axis=1
-    )
+    (targets_and_predictions_per_target)
+    .drop(["code_census_tract", "target_name"], axis=1)
     .corr()
-    .pipe(px.imshow)
+    .pipe(px.imshow, width=800, height=800)
 )
-
-# %%
