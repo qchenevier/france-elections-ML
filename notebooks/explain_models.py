@@ -91,7 +91,9 @@ def pad_suffix(series, width=2):
     return prefix + "_" + suffix_padded
 
 
-def compute_shap_values_and_features_for_target(shap_values, X, i_target=0):
+def compute_shap_values_and_features_for_target(
+    shap_values, X_to_explain, feature_descriptions, targets
+):
     X_to_explain_long = (
         xarray.DataArray(
             X_to_explain,
@@ -120,8 +122,11 @@ def compute_shap_values_and_features_for_target(shap_values, X, i_target=0):
             )
         )
     )
-    shap_values_and_features = shap_values_long.merge(
-        X_to_explain_long, on=["explanation_idx", "feature_name"]
+    shap_values_and_features = (
+        (shap_values_long)
+        .merge(X_to_explain_long, on=["explanation_idx", "feature_name"])
+        .merge(feature_descriptions, on="feature_name")
+        .assign(feature_name=lambda df: df.feature_name.pipe(pad_suffix))
     )
     return shap_values_and_features
 
@@ -154,21 +159,24 @@ def plot_summary(shap_values_and_features):
     features_colors = compute_features_colors(
         df_to_plot.feature_value_normalized
     )
-    features_names = (
-        df_to_plot.feature_name.drop_duplicates().sort_values().tolist()
+    features_descriptions = (
+        (df_to_plot)
+        .sort_values(by="feature_name")
+        .feature_description.drop_duplicates()
+        .tolist()
     )
     strip_size = 30
     fig = px.strip(
         df_to_plot,
-        y="feature_name",
+        y="feature_description",
         x="shap_value",
         color="feature_value_normalized",
         stripmode="overlay",
         width=1700,
-        category_orders={"feature_name": features_names},
+        category_orders={"feature_description": features_descriptions},
         color_discrete_map=features_colors,
         template="plotly_dark",
-        height=strip_size * len(features_names),
+        height=strip_size * len(features_descriptions),
         facet_col="target",
     )
     (fig).update_layout(showlegend=False).update_traces(
@@ -201,8 +209,12 @@ targets = catalog.load("targets")
 census_metadata = catalog.load("census_metadata")
 
 # %%
-features = runs[0]["features"]
-model = runs[0]["model"]
+model_name = "model_light_seed902_id044"
+run = next(filter(lambda r: r["model_name"] == model_name, runs))
+
+# %%
+features = run["features"]
+model = run["model"]
 
 # %%
 N_background_data_samples = 100
@@ -220,9 +232,18 @@ explainer = shap.KernelExplainer(
 shap_values = explainer.shap_values(X=X_to_explain, nsamples=100)
 
 # %%
+feature_descriptions = (
+    (census_metadata)
+    .assign(feature_name=lambda df: df.variable_name + "_" + df.value_code)
+    .assign(
+        feature_description=lambda df: df.value_description
+        + " — "
+        + df.variable_description
+    )
+    .filter(like="feature")
+    .dropna()
+)
 shap_values_and_features = compute_shap_values_and_features_for_target(
-    shap_values, X_to_explain
+    shap_values, X_to_explain, feature_descriptions, targets
 )
 plot_summary(shap_values_and_features)
-
-# %%
