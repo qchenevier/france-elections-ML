@@ -10,6 +10,7 @@ import polars as pl
 import torch
 import shap
 import matplotlib as mpl
+import xarray
 
 from kedro.extras.extensions.ipython import reload_kedro
 import plotly.express as px
@@ -91,19 +92,38 @@ def pad_suffix(series, width=2):
 
 
 def compute_shap_values_and_features_for_target(shap_values, X, i_target=0):
-    return (
-        pd.DataFrame(shap_values[i_target], columns=X.columns)
-        .melt(var_name="feature_name", value_name="shap_value")
-        .reset_index()
-        .merge(
-            (X)
-            .melt(var_name="feature_name", value_name="feature_value")
-            .reset_index(),
-            on=["index", "feature_name"],
+    X_to_explain_long = (
+        xarray.DataArray(
+            X_to_explain,
+            dims=["explanation_idx", "feature_name"],
+            name="feature_value",
         )
-        .drop("index", axis=1)
-        .assign(feature_name=lambda df: pad_suffix(df.feature_name))
+        .to_dataframe()
+        .reset_index()
     )
+    shap_values_long = (
+        xarray.DataArray(
+            shap_values,
+            dims=["target", "explanation_idx", "feature_name"],
+            name="shap_value",
+        )
+        .to_dataframe()
+        .reset_index()
+        .assign(
+            feature_name=lambda df: df.feature_name.replace(
+                pd.Series(X_to_explain.columns).to_dict()
+            )
+        )
+        .assign(
+            target=lambda df: df.target.replace(
+                pd.Series(targets.columns[1:]).to_dict()
+            )
+        )
+    )
+    shap_values_and_features = shap_values_long.merge(
+        X_to_explain_long, on=["explanation_idx", "feature_name"]
+    )
+    return shap_values_and_features
 
 
 def compute_features_colors(series):
@@ -112,7 +132,7 @@ def compute_features_colors(series):
     features_colors = {
         n: mpl.colors.rgb2hex(c)
         for n, c in zip(
-            features_values, mpl.cm.bwr_r(features_values_normalized)
+            features_values, mpl.cm.coolwarm(features_values_normalized)
         )
     }
     return features_colors
@@ -144,13 +164,14 @@ def plot_summary(shap_values_and_features):
         x="shap_value",
         color="feature_value_normalized",
         stripmode="overlay",
-        width=1000,
+        width=1700,
         category_orders={"feature_name": features_names},
         color_discrete_map=features_colors,
         template="plotly_dark",
         height=strip_size * len(features_names),
+        facet_col="target",
     )
-    fig.update_layout(showlegend=False).update_traces(
+    (fig).update_layout(showlegend=False).update_traces(
         width=1.7, marker=dict(size=4)
     )
     return fig
@@ -185,13 +206,10 @@ model = runs[0]["model"]
 
 # %%
 N_background_data_samples = 100
-N_explanations = 50
-df_features = features.to_pandas()
-df_features_sample = (
-    (df_features).sample(N_background_data_samples).reset_index(drop=True)
-)
-X_background_data = df_features_sample.iloc[:, 2:]
-X_to_explain = X_background_data.head(N_explanations)
+N_explanations = 200
+X = features.to_pandas().iloc[:, 2:]
+X_background_data = (X).sample(N_background_data_samples).reset_index(drop=True)
+X_to_explain = X.sample(N_explanations).reset_index(drop=True)
 
 # %%
 f_model = functionalize_model(model, rounded=False)
@@ -202,9 +220,8 @@ explainer = shap.KernelExplainer(
 shap_values = explainer.shap_values(X=X_to_explain, nsamples=100)
 
 # %%
-i_target = 0
 shap_values_and_features = compute_shap_values_and_features_for_target(
-    shap_values, X_to_explain, i_target
+    shap_values, X_to_explain
 )
 plot_summary(shap_values_and_features)
 
