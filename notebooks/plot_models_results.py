@@ -38,12 +38,8 @@ def compute_predictions_from_raw_predictions(df, drop_raw=True):
 
 
 def compute_densite_population_from_features(features):
-    # features_with_targets_non_null = compute_features_with_targets_non_null(
-    #     features
-    # )
     densite_population = (
         (features)
-        # (features_with_targets_non_null)
         .to_pandas()
         .groupby("code_census_tract")
         .agg({"densite_lognorm": "first", "population": "sum"})
