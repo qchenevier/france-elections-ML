@@ -1,19 +1,19 @@
 # %%
 from pathlib import Path
 import re
-import copy
+import logging
+import warnings
+
 
 import pandas as pd
 import polars as pl
-import numpy as np
 import torch
-from anchor import anchor_tabular
-from tqdm import tqdm
+import shap
+import matplotlib as mpl
 
 from kedro.extras.extensions.ipython import reload_kedro
-from kedro.io.data_catalog import CREDENTIALS_KEY
-import plotly.graph_objects as go
 import plotly.express as px
+from kedro.io import DataSetError
 
 
 # %%
@@ -29,45 +29,20 @@ def flatten_column_names(df):
     return df
 
 
-def _not_regex(reg):
-    return rf"^((?!{reg}).)*$"
-
-
-def compute_predictions_from_raw_predictions(df, drop_raw=True):
-    df = df.copy()
-    for c in df.filter(regex=r"_raw$").columns:
-        df[c[:-4]] = df[c] * df["population"]
-    if drop_raw:
-        return df.filter(regex=_not_regex(r"_raw$"))
-    return df
-
-
-def compute_densite_population_from_features(features):
-    features_with_targets_non_null = compute_features_with_targets_non_null(
-        features
-    )
-    densite_population = (
-        (features_with_targets_non_null)
-        .to_pandas()
-        .groupby("code_census_tract")
-        .agg({"densite_lognorm": "first", "population": "sum"})
-        .reset_index()
-    )
-    return densite_population
-
-
 def compute_metadata_from_model_name(model_name):
     metadata = dict(model_name=model_name)
-    pattern = r"^model_(?P<features_set>.*)_(?P<run_number>[0-9]*)"
+    pattern = r"^model_(?P<features>.*)_seed(?P<seed>[0-9]*)_id(?P<id>[0-9]*)"
     metadata.update(re.match(pattern, model_name).groupdict())
-    run_name = f"{metadata['features_set']}_{metadata['run_number']}"
+    run_name = (
+        f"{metadata['features']}_seed{metadata['seed']}_id{metadata['id']}"
+    )
     metadata.update({"run_name": run_name})
-    features_name = f"features_{metadata['features_set']}"
+    features_name = f"features_{metadata['features']}"
     metadata.update({"features_name": features_name})
     return metadata
 
 
-def compute_features_with_targets_non_null(features):
+def compute_features_with_targets_non_null(features, targets_non_null):
     return (features).filter(
         pl.col("code_census_tract").is_in(
             targets_non_null.code_census_tract.unique().tolist()
@@ -78,7 +53,10 @@ def compute_features_with_targets_non_null(features):
 def load_run(metadata, cache, catalog):
     def _cache_or_load(item_name, cache, catalog):
         if item_name not in cache:
-            cache[item_name] = catalog.load(item_name)
+            try:
+                cache[item_name] = catalog.load(item_name)
+            except DataSetError as e:
+                cache[item_name] = e
         return cache[item_name]
 
     return dict(
@@ -87,71 +65,101 @@ def load_run(metadata, cache, catalog):
     )
 
 
-def compute_predictions(features, model, targets):
-    n_targets = targets.shape[1] - 1
-    X = features[:, 2:].to_numpy()
-    raw_predictions = pd.DataFrame(
-        model.model(torch.tensor(X)).detach().numpy().reshape(-1, n_targets),
-        columns=targets.columns[1:],
-    ).add_suffix("_raw")
-    predictions = (
-        (features)
-        .select(["code_census_tract", "population"])
-        .to_pandas()
-        .join(raw_predictions)
-        .pipe(compute_predictions_from_raw_predictions)
-        .drop(["population"], axis=1)
-        .groupby("code_census_tract")
-        .sum()
-        .round()
-        .astype(int)
-        .reset_index()
-    )
-    return predictions
-
-
-def compute_predictions_from_runs(runs, targets):
-    def _add_suffix(df, suffix, no_suffix):
-        return (df).set_index(no_suffix).add_suffix(suffix).reset_index()
-
-    key_column = "code_census_tract"
-    if isinstance(runs, dict):
-        run = runs
-        features = run["features"]
-        suffix = f"_predicted_{run['run_name']}"
-        model = run["model"]
-        return (
-            (features)
-            .pipe(compute_features_with_targets_non_null)
-            .pipe(compute_predictions, model, targets)
-            .pipe(_add_suffix, suffix, key_column)
+def functionalize_model(model, rounded=True, target_idx=None):
+    def model_wrapped(X):
+        prediction = (
+            model.model(torch.tensor(X))
+            .detach()
+            .numpy()
+            .reshape(-1, 5)[
+                :, target_idx if target_idx is not None else slice(None)
+            ]
         )
-    return pd.concat(
-        [
-            compute_predictions_from_runs(run, targets).set_index(key_column)
-            for run in runs
-        ],
-        axis=1,
-    ).reset_index()
+        if rounded:
+            return prediction.round()
+        return prediction
+
+    return model_wrapped
 
 
-def add_predictions_from_runs(targets, runs):
+def pad_suffix(series, width=2):
+    prefix = (series).str.split("_").str[:-1].str.join("_")
+    suffix_padded = (
+        (series).str.split("_").str[-1].str.pad(width=width, fillchar="0")
+    )
+    return prefix + "_" + suffix_padded
+
+
+def compute_shap_values_and_features_for_target(shap_values, X, i_target=0):
     return (
-        (targets)
-        .set_index("code_census_tract")
-        .add_suffix("_actual")
-        .merge(
-            compute_predictions_from_runs(runs, targets).set_index(
-                "code_census_tract"
-            ),
-            on="code_census_tract",
-            how="inner",
-        )
+        pd.DataFrame(shap_values[i_target], columns=X.columns)
+        .melt(var_name="feature_name", value_name="shap_value")
         .reset_index()
+        .merge(
+            (X)
+            .melt(var_name="feature_name", value_name="feature_value")
+            .reset_index(),
+            on=["index", "feature_name"],
+        )
+        .drop("index", axis=1)
+        .assign(feature_name=lambda df: pad_suffix(df.feature_name))
     )
+
+
+def compute_features_colors(series):
+    features_values = series.sort_values().drop_duplicates()
+    features_values_normalized = features_values.pipe(lambda s: s / s.max())
+    features_colors = {
+        n: mpl.colors.rgb2hex(c)
+        for n, c in zip(
+            features_values, mpl.cm.bwr_r(features_values_normalized)
+        )
+    }
+    return features_colors
+
+
+def plot_summary(shap_values_and_features):
+    df_to_plot = (
+        (shap_values_and_features)
+        .groupby("feature_name", as_index=False)
+        .apply(
+            lambda dfg: dfg.assign(
+                feature_value_normalized=lambda df: df.feature_value.pipe(
+                    lambda s: (s - s.min()) / (max(1, s.max()) - s.min())
+                )
+            )
+        )
+        .reset_index(drop=True)
+    )
+    features_colors = compute_features_colors(
+        df_to_plot.feature_value_normalized
+    )
+    features_names = (
+        df_to_plot.feature_name.drop_duplicates().sort_values().tolist()
+    )
+    strip_size = 30
+    fig = px.strip(
+        df_to_plot,
+        y="feature_name",
+        x="shap_value",
+        color="feature_value_normalized",
+        stripmode="overlay",
+        width=1000,
+        category_orders={"feature_name": features_names},
+        color_discrete_map=features_colors,
+        template="plotly_dark",
+        height=strip_size * len(features_names),
+    )
+    fig.update_layout(showlegend=False).update_traces(
+        width=1.7, marker=dict(size=4)
+    )
+    return fig
 
 
 # %%
+logging.getLogger("shap").setLevel(logging.WARNING)
+warnings.filterwarnings("ignore")
+pd.options.plotting.backend = "plotly"
 startup_path = Path.cwd()
 project_path = startup_path.parent
 reload_kedro(project_path)
@@ -169,338 +177,35 @@ runs = [
 
 # %%
 targets = catalog.load("targets")
-targets_non_null = targets.loc[lambda df: ~(df == 0).any(axis=1)]
 census_metadata = catalog.load("census_metadata")
 
 # %%
 features = runs[0]["features"]
-features_with_targets_non_null = compute_features_with_targets_non_null(
-    features
-)
-densite_population = compute_densite_population_from_features(features)
-
-# %%
-model_selection = [
-    "model_minimal_005",
-    "model_minimal_007",
-    "model_minimal_000",
-    "model_zero_001",
-    "model_zero_008",
-    "model_zero_013",
-]
-
-# %%
-# %%
 model = runs[0]["model"]
 
-
-def model_wrapped(X, rounded=True, target_idx=3):
-    prediction = (
-        model.model(torch.tensor(X))
-        .detach()
-        .numpy()
-        .reshape(-1, 5)[:, target_idx]
-    )
-    if rounded:
-        return prediction.round()
-    return prediction
-
-
 # %%
-explainer = anchor_tabular.AnchorTabularExplainer(
-    class_names=targets.columns[1 + target_idx],
-    feature_names=features.columns[2:],
-    train_data=X,
+N_background_data_samples = 100
+N_explanations = 50
+df_features = features.to_pandas()
+df_features_sample = (
+    (df_features).sample(N_background_data_samples).reset_index(drop=True)
 )
-
-
-def explain(row):
-    return explainer.explain_instance(
-        row,
-        model_wrapped,
-    )
-
+X_background_data = df_features_sample.iloc[:, 2:]
+X_to_explain = X_background_data.head(N_explanations)
 
 # %%
-example = X[np.random.randint(X.shape[0])]
-explanation = explain(example)
-print(
-    f"""
-prediction: {model_wrapped(example, rounded=False)}
-names: {[cond for cond in explanation.names() if "sexe" in cond or "<= 0.00" not in cond]}
-precision: {explanation.precision()}
-coverage: {explanation.coverage()}
-"""
+f_model = functionalize_model(model, rounded=False)
+target_names = targets.columns[1:].tolist()
+explainer = shap.KernelExplainer(
+    model=f_model, data=X_background_data, algorithm="deep"
 )
-
-
-# %%
-def compute_condition_value_and_variable(df):
-    return (
-        df.assign(
-            condition_split=lambda df: (df.condition)
-            .str.replace("=", "")
-            .str.split(r"(<|>)")
-        )
-        .assign(
-            condition_right=lambda df: (df.condition_split)
-            .str[-1]
-            .pipe(pd.to_numeric, errors="coerce")
-        )
-        .assign(
-            condition_left=lambda df: (df.condition_split)
-            .str[0]
-            .pipe(pd.to_numeric, errors="coerce")
-            .fillna(df.condition_right)
-        )
-        .assign(
-            bonus=lambda df: (df.condition_split.str[1] == ">").astype(float)
-        )
-        .assign(
-            value=lambda df: (df.condition_right + df.condition_left) / 2
-            + df.bonus
-        )
-        .assign(variable=lambda df: df.condition_split.str[-3])
-        .drop(
-            ["condition_split", "condition_left", "condition_right", "bonus"],
-            axis=1,
-        )
-    )
-
+shap_values = explainer.shap_values(X=X_to_explain, nsamples=100)
 
 # %%
-N = 100
-X_sample_shuffled = np.random.permutation(X_sample)[:N]
-
-# %%
-explanations = [explain(X_sample_shuffled[i, :]) for i in tqdm(range(N))]
-
-# %%
-# predictions = [model_wrapped(X_sample_shuffled[i, :])[0] for i in tqdm(range(N))]
-predictions = [
-    model_wrapped(X_sample_shuffled[i, :])[0] >= 1 for i in tqdm(range(N))
-]
-
-# %%
-
-
-df_explanations = (
-    pd.DataFrame(
-        {
-            "condition": [e.names() for e in explanations],
-            "prediction": predictions,
-        }
-    )
-    .explode("condition")
-    .pipe(compute_condition_value_and_variable)
-    .assign(value=lambda df: df.value + (df.value == 0.5) / 2)
+i_target = 0
+shap_values_and_features = compute_shap_values_and_features_for_target(
+    shap_values, X_to_explain, i_target
 )
-
-explanation_pivot = (
-    (df_explanations)
-    .loc[:, ["prediction", "variable", "value"]]
-    .assign(
-        variable=lambda df: (df.variable)
-        .str.strip()
-        .str.replace(r"[0-9]+$", lambda x: x.group(0).zfill(2))
-    )
-    .sort_values(by="variable")
-    .pivot_table(
-        index="variable",
-        columns="prediction",
-        values="value",
-        aggfunc=["mean", "count"],
-    )
-    .reset_index()
-)
-
-value_descriptions = (
-    explanation_pivot.variable.str.extract(r"((.*)_([0-9Z]+))$")
-    .rename(columns={0: "variable", 1: "variable_name", 2: "value_code"})
-    # .assign(value_code=lambda df: df.value_code.str.lstrip("0"))
-    .merge(
-        census_metadata.assign(
-            value_code=lambda df: df.value_code.str.zfill(2)
-        ).loc[:, ["variable_name", "value_code", "value_description"]],
-        how="left",
-    )
-    .dropna()
-    .loc[:, ["variable", "value_description"]]
-)
-
-with pd.option_context("precision", 2):
-    explanation_grid = (
-        explanation_pivot.pipe(flatten_column_names)
-        .merge(value_descriptions, on="variable", how="left")
-        .style.background_gradient()
-    )
-
-explanation_grid
-
-# %%
-
-# %%
-census_metadata
-
-# %%
-census_metadata.loc[lambda df: df.variable_name == "statut_conjugal"]
-
-# %%
-# %%
-# %%
-# %%
-# import altair as alt
-from lime.lime_tabular import LimeTabularExplainer
-
-# %%
-# pl.utilities.seed.seed_everything(7)
-
-# # %%
-# df_features_filepath = "data/df_features.hdf5"
-# df_targets_filepath = "data/df_targets.parquet"
-
-# # %%
-# df_features = vaex.open(df_features_filepath)
-# df_targets = pd.read_parquet(df_targets_filepath)
-# df_targets_non_null = df_targets.loc[lambda df: ~(df == 0).any(axis=1)]
-
-# # %%
-# dataset = MasterDataset(
-#     df_features,
-#     df_targets_non_null,
-#     ID_column="code_census_tract",
-# )
-
-# # %%
-# not_feature_or_target = ["code_census_tract", "population"]
-# n_features = len(set(dataset.features) - set(not_feature_or_target))
-# n_targets = len(set(dataset.targets) - set(not_feature_or_target))
-# log_folder = "lightning_logs"
-# model = AggregateModel.load_from_checkpoint(
-#     get_last_checkpoint(log_folder=log_folder),
-#     n_features=n_features,
-#     n_targets=n_targets,
-#     n_hidden_layers=1,
-# )
-
-# %%
-# X = torch.tensor(dataset[0][0][:, 2:])
-# X_sample = torch.unique(X, dim=0).detach().numpy()
-
-# target_idx = 3
-
-
-# def model_wrapped(X):
-#     return (
-#         model.model(torch.tensor(X))
-#         .detach()
-#         .numpy()
-#         .reshape(-1, 5)[:, target_idx]
-#     )
-
-
-# %%
-categorical_features = (
-    [c for c in features.columns[2:] if re.match(r".*_[0-9Z]+$", c)],
-)
-
-explainer = LimeTabularExplainer(
-    X,
-    feature_names=features.columns[2:],
-    categorical_features=categorical_features,
-    class_names=targets.columns[target_idx + 1],
-    mode="regression",
-    # verbose=True,
-)
-
-
-def explain(row):
-    return explainer.explain_instance(
-        row,
-        model_wrapped,
-        labels=model_wrapped(row),
-        num_features=row.shape[0],
-        num_samples=200,
-    )
-
-
-def compute_condition_value_and_variable(df):
-    return (
-        df.assign(
-            condition_split=lambda df: df.condition.str.replace(
-                "=", ""
-            ).str.split(r"(<|>)")
-        )
-        .assign(
-            condition_right=lambda df: df.condition_split.str[-1].pipe(
-                pd.to_numeric, errors="coerce"
-            )
-        )
-        .assign(
-            condition_left=lambda df: df.condition_split.str[0]
-            .pipe(pd.to_numeric, errors="coerce")
-            .fillna(df.condition_right)
-        )
-        .assign(
-            bonus=lambda df: (df.condition_split.str[1] == ">").astype(float)
-        )
-        .assign(
-            value=lambda df: (df.condition_right + df.condition_left) / 2
-            + df.bonus
-        )
-        .assign(variable=lambda df: df.condition_split.str[-3])
-        .drop(
-            ["condition_split", "condition_left", "condition_right", "bonus"],
-            axis=1,
-        )
-    )
-
-
-# %%
-# X_sample_shuffled = np.random.permutation(X_sample)
-explanations = [explain(X_sample_shuffled[i]) for i in tqdm(range(100))]
-
-# %%
-df_explanations = (
-    pd.DataFrame(
-        [e for explanation in explanations for e in explanation.as_list()],
-        columns=["condition", "impact"],
-    )
-    .pipe(compute_condition_value_and_variable)
-    .assign(value=lambda df: df.value + (df.value == 0.5) / 2)
-)
-
-
-# %%
-def normalize(serie):
-    return (serie - serie.mean()) / serie.std()
-
-
-df_plot = (
-    (df_explanations)
-    .loc[:, ["impact", "variable", "value"]]
-    .assign(
-        variable=lambda df: (df.variable)
-        .str.strip()
-        .str.replace(r"[0-9]+$", lambda x: x.group(0).zfill(2))
-    )
-    .sort_values(by="variable")
-    .groupby("variable", as_index=False)
-    .apply(
-        lambda df: df.assign(
-            value_impact=lambda df: normalize(df.value) * df.impact
-        )
-    )
-    .reset_index(drop=True)
-)
-
-# %%
-import seaborn as sns
-
-height = 1
-g = sns.FacetGrid(
-    df_plot, row="variable", hue="value", height=height, aspect=8 / height
-)
-g.map(sns.histplot, "impact")
+plot_summary(shap_values_and_features)
 
 # %%
