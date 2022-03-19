@@ -75,5 +75,6 @@ def create_pipeline() -> Pipeline:
                 outputs="census_tract_shape",
                 name="census_tract_shape",
             ),
-        ]
+        ],
+        tags="intermediate",
     )

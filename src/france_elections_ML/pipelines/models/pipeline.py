@@ -18,5 +18,6 @@ def create_pipeline() -> Pipeline:
                 name=model_name,
             )
             for model_name, params in params_dict.items()
-        ]
+        ],
+        tags="models",
     )

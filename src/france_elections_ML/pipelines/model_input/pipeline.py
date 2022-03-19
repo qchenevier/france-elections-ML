@@ -12,6 +12,7 @@ def create_pipeline() -> Pipeline:
                 inputs=["municipales_2020_t1", "census_tract_code"],
                 outputs="targets",
                 name="targets",
+                tags="targets",
             )
         ]
         + [
@@ -24,7 +25,9 @@ def create_pipeline() -> Pipeline:
                 ],
                 outputs=f"features_{features}",
                 name=f"features_{features}",
+                tags="features",
             )
             for features in ["zero", "minimal", "light", "complex", "full"]
-        ]
+        ],
+        tags="model_input",
     )

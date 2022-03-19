@@ -35,5 +35,6 @@ def create_pipeline() -> Pipeline:
                 outputs="municipales_2020_t1_raw",
                 name="municipales_2020_t1_raw",
             ),
-        ]
+        ],
+        tags="raw",
     )
