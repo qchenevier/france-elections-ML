@@ -1,486 +1,100 @@
-model_light_seed900_id036:
+model_complex_seed1000_id006:
+  experiment_id: 10
+  features: complex
+  hidden_activation: GELU
+  hidden_layers: 1
+  hidden_size_factor: 0.5
+  max_epochs: 1000
+  model_name: model_complex_seed1000_id006
+  output_activation: Softplus
+  seed: 1000
+model_complex_seed1000_id007:
+  experiment_id: 10
+  features: complex
+  hidden_activation: GELU
+  hidden_layers: 1
+  hidden_size_factor: 0.9
+  max_epochs: 1000
+  model_name: model_complex_seed1000_id007
+  output_activation: Softplus
+  seed: 1000
+model_full_seed1000_id008:
+  experiment_id: 10
+  features: full
+  hidden_activation: GELU
+  hidden_layers: 1
+  hidden_size_factor: 0.5
+  max_epochs: 1000
+  model_name: model_full_seed1000_id008
+  output_activation: Softplus
+  seed: 1000
+model_full_seed1000_id009:
+  experiment_id: 10
+  features: full
+  hidden_activation: GELU
+  hidden_layers: 1
+  hidden_size_factor: 0.9
+  max_epochs: 1000
+  model_name: model_full_seed1000_id009
+  output_activation: Softplus
+  seed: 1000
+model_light_seed1000_id004:
+  experiment_id: 10
   features: light
   hidden_activation: GELU
   hidden_layers: 1
   hidden_size_factor: 0.5
   max_epochs: 1000
-  model_name: model_light_seed900_id036
+  model_name: model_light_seed1000_id004
   output_activation: Softplus
-  seed: 900
-model_light_seed900_id042:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_light_seed900_id042
-  output_activation: Softplus
-  seed: 900
-model_light_seed900_id048:
+  seed: 1000
+model_light_seed1000_id005:
+  experiment_id: 10
   features: light
   hidden_activation: GELU
   hidden_layers: 1
   hidden_size_factor: 0.9
   max_epochs: 1000
-  model_name: model_light_seed900_id048
+  model_name: model_light_seed1000_id005
   output_activation: Softplus
-  seed: 900
-model_light_seed901_id037:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_light_seed901_id037
-  output_activation: Softplus
-  seed: 901
-model_light_seed901_id043:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_light_seed901_id043
-  output_activation: Softplus
-  seed: 901
-model_light_seed901_id049:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_light_seed901_id049
-  output_activation: Softplus
-  seed: 901
-model_light_seed902_id038:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_light_seed902_id038
-  output_activation: Softplus
-  seed: 902
-model_light_seed902_id044:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_light_seed902_id044
-  output_activation: Softplus
-  seed: 902
-model_light_seed902_id050:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_light_seed902_id050
-  output_activation: Softplus
-  seed: 902
-model_light_seed903_id039:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_light_seed903_id039
-  output_activation: Softplus
-  seed: 903
-model_light_seed903_id045:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_light_seed903_id045
-  output_activation: Softplus
-  seed: 903
-model_light_seed903_id051:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_light_seed903_id051
-  output_activation: Softplus
-  seed: 903
-model_light_seed904_id040:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_light_seed904_id040
-  output_activation: Softplus
-  seed: 904
-model_light_seed904_id046:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_light_seed904_id046
-  output_activation: Softplus
-  seed: 904
-model_light_seed904_id052:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_light_seed904_id052
-  output_activation: Softplus
-  seed: 904
-model_light_seed905_id041:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_light_seed905_id041
-  output_activation: Softplus
-  seed: 905
-model_light_seed905_id047:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_light_seed905_id047
-  output_activation: Softplus
-  seed: 905
-model_light_seed905_id053:
-  features: light
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_light_seed905_id053
-  output_activation: Softplus
-  seed: 905
-model_minimal_seed900_id018:
+  seed: 1000
+model_minimal_seed1000_id002:
+  experiment_id: 10
   features: minimal
   hidden_activation: GELU
   hidden_layers: 1
   hidden_size_factor: 0.5
   max_epochs: 1000
-  model_name: model_minimal_seed900_id018
+  model_name: model_minimal_seed1000_id002
   output_activation: Softplus
-  seed: 900
-model_minimal_seed900_id024:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_minimal_seed900_id024
-  output_activation: Softplus
-  seed: 900
-model_minimal_seed900_id030:
+  seed: 1000
+model_minimal_seed1000_id003:
+  experiment_id: 10
   features: minimal
   hidden_activation: GELU
   hidden_layers: 1
   hidden_size_factor: 0.9
   max_epochs: 1000
-  model_name: model_minimal_seed900_id030
+  model_name: model_minimal_seed1000_id003
   output_activation: Softplus
-  seed: 900
-model_minimal_seed901_id019:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_minimal_seed901_id019
-  output_activation: Softplus
-  seed: 901
-model_minimal_seed901_id025:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_minimal_seed901_id025
-  output_activation: Softplus
-  seed: 901
-model_minimal_seed901_id031:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_minimal_seed901_id031
-  output_activation: Softplus
-  seed: 901
-model_minimal_seed902_id020:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_minimal_seed902_id020
-  output_activation: Softplus
-  seed: 902
-model_minimal_seed902_id026:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_minimal_seed902_id026
-  output_activation: Softplus
-  seed: 902
-model_minimal_seed902_id032:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_minimal_seed902_id032
-  output_activation: Softplus
-  seed: 902
-model_minimal_seed903_id021:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_minimal_seed903_id021
-  output_activation: Softplus
-  seed: 903
-model_minimal_seed903_id027:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_minimal_seed903_id027
-  output_activation: Softplus
-  seed: 903
-model_minimal_seed903_id033:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_minimal_seed903_id033
-  output_activation: Softplus
-  seed: 903
-model_minimal_seed904_id022:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_minimal_seed904_id022
-  output_activation: Softplus
-  seed: 904
-model_minimal_seed904_id028:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_minimal_seed904_id028
-  output_activation: Softplus
-  seed: 904
-model_minimal_seed904_id034:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_minimal_seed904_id034
-  output_activation: Softplus
-  seed: 904
-model_minimal_seed905_id023:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_minimal_seed905_id023
-  output_activation: Softplus
-  seed: 905
-model_minimal_seed905_id029:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_minimal_seed905_id029
-  output_activation: Softplus
-  seed: 905
-model_minimal_seed905_id035:
-  features: minimal
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_minimal_seed905_id035
-  output_activation: Softplus
-  seed: 905
-model_zero_seed900_id000:
+  seed: 1000
+model_zero_seed1000_id000:
+  experiment_id: 10
   features: zero
   hidden_activation: GELU
   hidden_layers: 1
   hidden_size_factor: 0.5
   max_epochs: 1000
-  model_name: model_zero_seed900_id000
+  model_name: model_zero_seed1000_id000
   output_activation: Softplus
-  seed: 900
-model_zero_seed900_id006:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_zero_seed900_id006
-  output_activation: Softplus
-  seed: 900
-model_zero_seed900_id012:
+  seed: 1000
+model_zero_seed1000_id001:
+  experiment_id: 10
   features: zero
   hidden_activation: GELU
   hidden_layers: 1
   hidden_size_factor: 0.9
   max_epochs: 1000
-  model_name: model_zero_seed900_id012
+  model_name: model_zero_seed1000_id001
   output_activation: Softplus
-  seed: 900
-model_zero_seed901_id001:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_zero_seed901_id001
-  output_activation: Softplus
-  seed: 901
-model_zero_seed901_id007:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_zero_seed901_id007
-  output_activation: Softplus
-  seed: 901
-model_zero_seed901_id013:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_zero_seed901_id013
-  output_activation: Softplus
-  seed: 901
-model_zero_seed902_id002:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_zero_seed902_id002
-  output_activation: Softplus
-  seed: 902
-model_zero_seed902_id008:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_zero_seed902_id008
-  output_activation: Softplus
-  seed: 902
-model_zero_seed902_id014:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_zero_seed902_id014
-  output_activation: Softplus
-  seed: 902
-model_zero_seed903_id003:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_zero_seed903_id003
-  output_activation: Softplus
-  seed: 903
-model_zero_seed903_id009:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_zero_seed903_id009
-  output_activation: Softplus
-  seed: 903
-model_zero_seed903_id015:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_zero_seed903_id015
-  output_activation: Softplus
-  seed: 903
-model_zero_seed904_id004:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_zero_seed904_id004
-  output_activation: Softplus
-  seed: 904
-model_zero_seed904_id010:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_zero_seed904_id010
-  output_activation: Softplus
-  seed: 904
-model_zero_seed904_id016:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_zero_seed904_id016
-  output_activation: Softplus
-  seed: 904
-model_zero_seed905_id005:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.5
-  max_epochs: 1000
-  model_name: model_zero_seed905_id005
-  output_activation: Softplus
-  seed: 905
-model_zero_seed905_id011:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.7
-  max_epochs: 1000
-  model_name: model_zero_seed905_id011
-  output_activation: Softplus
-  seed: 905
-model_zero_seed905_id017:
-  features: zero
-  hidden_activation: GELU
-  hidden_layers: 1
-  hidden_size_factor: 0.9
-  max_epochs: 1000
-  model_name: model_zero_seed905_id017
-  output_activation: Softplus
-  seed: 905
+  seed: 1000
