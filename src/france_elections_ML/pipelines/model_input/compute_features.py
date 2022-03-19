@@ -1,4 +1,7 @@
 # %%
+from itertools import accumulate
+from collections import OrderedDict
+
 import numpy as np
 import polars as pl
 
@@ -69,24 +72,15 @@ def compute_features_list(param_features):
 
     Args:
         param_features (String or list[String]):
-        - String in ["personal_profile", "job", "wealth", "job_detailed"]
-        or a combination, joined with "+".
-        - String in ["minimal", "light", "complex", "full"]:
-            minimal = personal_profile
-            light   = personal_profile+job
-            complex = personal_profile+job+wealth
-            full    = personal_profile+job+wealth+job_detailed
-        - list[String] of features names:
+        - String in ["zero", "minimal", "light", "complex", "full"]
+        - list[String] of features names
 
     E.g:
+        compute_features_list("zero")
         compute_features_list("minimal")
         compute_features_list("light")
         compute_features_list("complex")
         compute_features_list("full")
-        compute_features_list("personal_profile")
-        compute_features_list("personal_profile+job")
-        compute_features_list("personal_profile+job+job_detailed")
-        compute_features_list(["sexe", "statut_conjugal", "temps_travail"])
         compute_features_list(
             [
                 "age_annees_revolues_age_dernier_anniversaire_13_classes_age_detaillees_autour_20_ans",
@@ -107,41 +101,27 @@ def compute_features_list(param_features):
     """
     if isinstance(param_features, list):
         return param_features
-    groups = dict(
-        personal_profile=[
-            "age_annees_revolues_age_dernier_anniversaire_13_classes_age_detaillees_autour_20_ans",
-            "sexe",
+    features_groups = OrderedDict(
+        zero=["sexe"],
+        minimal=[
+            "indicateur_nationalite_condense_francais_etranger",
             "statut_conjugal",
+            "appartenance_logement_organisme_HLM",
         ],
-        job=[
-            "condition_emploi",
+        light=["age_quinquennal_annees_revolues"],
+        complex=[
             "diplome_plus_eleve",
-        ],
-        wealth=[
-            "nombre_personnes_menage_regroupe",
-            "nombre_voitures_menage",
-            "statut_occupation_detaille_logement",
-            "superficie_logement",
-        ],
-        job_detailed=[
-            "activite_economique_17_postes_na_a17",
             "categorie_socioprofessionnelle_8_postes",
-            "temps_travail",
-            "type_activite",
+        ],
+        full=[
+            "activite_economique_17_postes_na_a17",
+            "mode_transport_principal_plus_souvent_utilise_pour_aller_travailler",
         ],
     )
-    if param_features == "zero":
-        return ["sexe"]
-    if param_features == "minimal":
-        return groups["personal_profile"]
-    if param_features == "light":
-        return groups["personal_profile"] + groups["job"]
-    elif param_features == "complex":
-        return groups["personal_profile"] + groups["job"] + groups["wealth"]
-    elif param_features == "full":
-        return sum(list(groups.values()), [])
-    else:
-        return sum([groups[param] for param in param_features.split("+")], [])
+    features_accumulated = dict(
+        zip(features_groups.keys(), accumulate(features_groups.values()))
+    )
+    return features_accumulated[param_features]
 
 
 def compute_features(df_census, census_tract_shape, param_features):
