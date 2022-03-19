@@ -22,10 +22,10 @@ def train_model(df_features, df_targets, parameters):
     features = parameters.get("features", "minimal")
     seed = parameters.get("seed", 7)
     max_epochs = parameters.get("max_epochs", 10)
-    version = version_name_from_params(parameters)
+    model_name = parameters.get("model_name", "model_0")
 
     model_dir = "./data/tmp"
-    checkpoint_dir = os.path.join(model_dir, features, version)
+    checkpoint_dir = os.path.join(model_dir, features, model_name)
     pl.utilities.seed.seed_everything(seed, workers=True)
 
     df_targets_non_null = df_targets.loc[lambda df: ~(df == 0).any(axis=1)]
