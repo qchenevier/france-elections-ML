@@ -48,16 +48,7 @@ def train_model(df_features, df_targets, parameters):
     )
 
     trainer = pl.Trainer(
-        logger=[
-            pl.loggers.NeptuneLogger(
-                tags=[
-                    f"features: {features}",
-                    f"seed: {seed}",
-                    f"max_epochs: {max_epochs}",
-                ],
-                name=features,
-            )
-        ],
+        logger=[pl.loggers.NeptuneLogger()],
         callbacks=[
             pl.callbacks.ModelCheckpoint(
                 dirpath=checkpoint_dir,
