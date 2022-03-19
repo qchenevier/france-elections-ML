@@ -11,10 +11,10 @@ def model_name(params, i, N):
 
 grid_dimensions = {
     "features": ["zero", "minimal", "light", "complex", "full"],
-    "seed": list(range(1000, 1000 + 2)),
+    "seed": list(range(1000, 1000 + 1)),
     "max_epochs": [1000],
     "hidden_layers": [1],
-    "hidden_size_factor": [0.5, 0.7, 0.9],
+    "hidden_size_factor": [0.5, 0.9],
     "output_activation": ["Softplus"],
     "hidden_activation": ["GELU"],
     "experiment_id": [10],
