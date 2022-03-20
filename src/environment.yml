@@ -18,8 +18,8 @@ dependencies:
 
   # Data ops / ML ops
   - kedro
-  - neptune-client
-  - kedro-neptune
+  - neptune-client==0.14.3
+  - kedro-neptune==0.0.7
   - s3fs
 
   ## Data engineering
@@ -33,6 +33,7 @@ dependencies:
   - scikit-learn
   - pytorch
   - pytorch-lightning
+  - shap
 
   ## Data viz
   - seaborn
