@@ -348,12 +348,16 @@ residuals_long = compute_residuals_long(residuals_per_target)
 target_selection = ["inscrits", "voix", "gauche", "droite", "autre"]
 model_selection = [
     "target",
-    "model_light_seed902_id044",
-    "model_light_seed903_id045",
-    "model_minimal_seed904_id022",
-    "model_minimal_seed903_id033",
-    "model_zero_seed904_id010",
-    "model_zero_seed904_id016",
+    "model_full_seed1000_id009",
+    "model_full_seed1000_id008",
+    "model_complex_seed1000_id007",
+    "model_complex_seed1000_id006",
+    "model_light_seed1000_id005",
+    "model_light_seed1000_id004",
+    "model_minimal_seed1000_id003",
+    "model_minimal_seed1000_id002",
+    "model_zero_seed1000_id001",
+    "model_zero_seed1000_id000",
 ]
 
 # %%
@@ -399,6 +403,9 @@ plot_residuals(
 (
     (targets_and_predictions_per_target)
     .drop(["code_census_tract", "target_name"], axis=1)
-    .corr()
+    .loc[:, model_selection]
+    .corr(method="pearson")
     .pipe(px.imshow, width=800, height=800)
 )
+
+# %%

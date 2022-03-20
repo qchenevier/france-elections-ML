@@ -91,8 +91,37 @@ def pad_suffix(series, width=2):
     return prefix + "_" + suffix_padded
 
 
+def pad_variable_code_in_feature_name(df, variable_lengths):
+    return (
+        df.assign(
+            variable_name=lambda df: df.feature_name.str.split("_")
+            .str[:-1]
+            .str.join("_")
+        )
+        .assign(variable_code=lambda df: df.feature_name.str.split("_").str[-1])
+        .groupby("variable_name", as_index=False)
+        .apply(
+            lambda df: df.assign(
+                variable_code_padded=df.variable_code.str.pad(
+                    width=variable_lengths.get(df.variable_name.iloc[0], 0),
+                    fillchar="0",
+                )
+            )
+        )
+        .reset_index(drop=True)
+        .assign(
+            feature_name=lambda df: df.variable_name
+            + "_"
+            + df.variable_code_padded
+        )
+        .drop(
+            ["variable_name", "variable_code", "variable_code_padded"], axis=1
+        )
+    )
+
+
 def compute_shap_values_and_features_for_target(
-    shap_values, X_to_explain, feature_descriptions, targets
+    shap_values, X_to_explain, feature_descriptions, targets, variable_lengths
 ):
     X_to_explain_long = (
         xarray.DataArray(
@@ -125,8 +154,8 @@ def compute_shap_values_and_features_for_target(
     shap_values_and_features = (
         (shap_values_long)
         .merge(X_to_explain_long, on=["explanation_idx", "feature_name"])
+        .pipe(pad_variable_code_in_feature_name, variable_lengths)
         .merge(feature_descriptions, on="feature_name")
-        .assign(feature_name=lambda df: df.feature_name.pipe(pad_suffix))
     )
     return shap_values_and_features
 
@@ -143,7 +172,39 @@ def compute_features_colors(series):
     return features_colors
 
 
-def plot_summary(shap_values_and_features):
+def compute_shap_values_and_features(
+    run,
+    targets,
+    feature_descriptions,
+    n_background_data_samples=100,
+    n_explanations=200,
+):
+    features = run["features"]
+    model = run["model"]
+
+    X = features.to_pandas().iloc[:, 2:]
+    X_background_data = (
+        (X).sample(n_background_data_samples).reset_index(drop=True)
+    )
+    X_to_explain = X.sample(n_explanations).reset_index(drop=True)
+
+    f_model = functionalize_model(model, rounded=False)
+    explainer = shap.KernelExplainer(
+        model=f_model, data=X_background_data, algorithm="deep"
+    )
+    shap_values = explainer.shap_values(X=X_to_explain, nsamples=100)
+
+    shap_values_and_features = compute_shap_values_and_features_for_target(
+        shap_values,
+        X_to_explain,
+        feature_descriptions,
+        targets,
+        variable_lengths,
+    )
+    return shap_values_and_features
+
+
+def plot_summary(shap_values_and_features, clip=None):
     df_to_plot = (
         (shap_values_and_features)
         .groupby("feature_name", as_index=False)
@@ -155,6 +216,9 @@ def plot_summary(shap_values_and_features):
             )
         )
         .reset_index(drop=True)
+        .assign(
+            shap_value=lambda df: df.shap_value.clip(lower=-clip, upper=clip)
+        )
     )
     features_colors = compute_features_colors(
         df_to_plot.feature_value_normalized
@@ -165,24 +229,40 @@ def plot_summary(shap_values_and_features):
         .feature_description.drop_duplicates()
         .tolist()
     )
-    strip_size = 30
+    target_order = [
+        "inscrits",
+        "voix",
+        "gauche",
+        "droite",
+        "autre",
+    ]
+    strip_size = 25
     fig = px.strip(
         df_to_plot,
         y="feature_description",
         x="shap_value",
         color="feature_value_normalized",
         stripmode="overlay",
-        width=1700,
-        category_orders={"feature_description": features_descriptions},
+        width=1650,
+        category_orders={
+            "feature_description": features_descriptions,
+            "target": target_order,
+        },
         color_discrete_map=features_colors,
         template="plotly_dark",
-        height=strip_size * len(features_descriptions),
+        height=strip_size * len(features_descriptions) + 140,
         facet_col="target",
     )
     (fig).update_layout(showlegend=False).update_traces(
         width=1.7, marker=dict(size=4)
     )
     return fig
+
+
+def insert_row(df, row_tuple):
+    return pd.concat(
+        [df, pd.DataFrame([row_tuple], columns=df.columns)]
+    ).reset_index(drop=True)
 
 
 # %%
@@ -209,29 +289,6 @@ targets = catalog.load("targets")
 census_metadata = catalog.load("census_metadata")
 
 # %%
-model_name = "model_light_seed902_id044"
-run = next(filter(lambda r: r["model_name"] == model_name, runs))
-
-# %%
-features = run["features"]
-model = run["model"]
-
-# %%
-N_background_data_samples = 100
-N_explanations = 200
-X = features.to_pandas().iloc[:, 2:]
-X_background_data = (X).sample(N_background_data_samples).reset_index(drop=True)
-X_to_explain = X.sample(N_explanations).reset_index(drop=True)
-
-# %%
-f_model = functionalize_model(model, rounded=False)
-target_names = targets.columns[1:].tolist()
-explainer = shap.KernelExplainer(
-    model=f_model, data=X_background_data, algorithm="deep"
-)
-shap_values = explainer.shap_values(X=X_to_explain, nsamples=100)
-
-# %%
 feature_descriptions = (
     (census_metadata)
     .assign(feature_name=lambda df: df.variable_name + "_" + df.value_code)
@@ -242,8 +299,45 @@ feature_descriptions = (
     )
     .filter(like="feature")
     .dropna()
+    .pipe(insert_row, ("densite_lognorm", "Densité (log normalisée)"))
 )
-shap_values_and_features = compute_shap_values_and_features_for_target(
-    shap_values, X_to_explain, feature_descriptions, targets
+variable_lengths = (
+    (census_metadata)
+    .loc[:, ["variable_name", "variable_length"]]
+    .drop_duplicates()
+    .set_index("variable_name")
+    .variable_length.astype(int)
+    .to_dict()
 )
-plot_summary(shap_values_and_features)
+
+# %%
+model_selection = [
+    "model_full_seed1000_id009",
+    "model_complex_seed1000_id007",
+    "model_light_seed1000_id005",
+    "model_minimal_seed1000_id003",
+    "model_zero_seed1000_id001",
+]
+runs_selection = {
+    model_name: next(filter(lambda r: r["model_name"] == model_name, runs))
+    for model_name in model_selection
+}
+
+# %%
+shap_values_and_features_for_selection = {
+    model_name: compute_shap_values_and_features(
+        run, targets, feature_descriptions
+    )
+    for model_name, run in runs_selection.items()
+}
+
+# %%
+clip = 0.35
+for model_name in model_selection:
+    logging.info("Saving explanation plot for model: %s", model_name)
+    fig = plot_summary(
+        shap_values_and_features_for_selection[model_name], clip=clip
+    )
+    fig.write_html(f"shap_explanations_{model_name}.html", include_plotlyjs="cdn")
+
+# %%
