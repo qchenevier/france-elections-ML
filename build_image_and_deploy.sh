@@ -1,3 +1,5 @@
+set -e # to stop script if something fails
+
 python src/france_elections_ML/pipelines/models/generate_params_and_catalogs.py
 
 kedro docker build --base-image="condaforge/mambaforge"
