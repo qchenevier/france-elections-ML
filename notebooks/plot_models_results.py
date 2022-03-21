@@ -224,9 +224,7 @@ def compute_residuals_long(residuals_per_target):
     )
 
 
-def compute_facet_params(
-    model_selection, target_selection, plot_size=250, legend_size=100
-):
+def compute_facet_params(model_selection, target_selection, plot_size=205):
     color_discrete_map = {
         "inscrits": "white",
         "voix": "palegreen",
@@ -238,8 +236,8 @@ def compute_facet_params(
         "target_name": target_selection,
         "target_or_model": model_selection,
     }
-    width = plot_size * (len(model_selection) + 1) + legend_size
-    height = plot_size * len(target_selection)
+    width = plot_size * (len(model_selection) + 1) + 220
+    height = plot_size * len(target_selection) + 140
     return dict(
         template="plotly_dark",
         facet_col="target_or_model",
@@ -349,6 +347,67 @@ target_selection = ["inscrits", "voix", "gauche", "droite", "autre"]
 model_selection = [
     "target",
     "model_full_seed1000_id009",
+    # "model_full_seed1000_id008",
+    "model_complex_seed1000_id007",
+    # "model_complex_seed1000_id006",
+    "model_light_seed1000_id005",
+    # "model_light_seed1000_id004",
+    "model_minimal_seed1000_id003",
+    # "model_minimal_seed1000_id002",
+    "model_zero_seed1000_id001",
+    # "model_zero_seed1000_id000",
+]
+
+# %%
+fig = plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    model_selection,
+    target_selection,
+)
+fig.write_html("predictions_all_targets.html")
+
+# %%
+fig = plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    model_selection,
+    target_selection[:2],
+)
+fig.write_html("predictions_voix_inscrits.html")
+
+# %%
+fig = plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    model_selection,
+    target_selection[2:],
+)
+fig.write_html("predictions_gauche_droite_autre.html")
+
+# %%
+fig = plot_residuals(
+    residuals_long, densite_population, model_selection, target_selection
+)
+fig.write_html("residuals_all_predictions.html")
+
+
+# %%
+fig = plot_residuals(
+    residuals_long, densite_population, model_selection, target_selection[:2]
+)
+fig.write_html("residuals_voix_inscrits.html")
+
+# %%
+fig = plot_residuals(
+    residuals_long, densite_population, model_selection, target_selection[2:]
+)
+fig.write_html("residuals_gauche_droit_autre.html")
+
+# %%
+model_selection = [
+    "target",
+    "model_full_seed1000_id009",
     "model_full_seed1000_id008",
     "model_complex_seed1000_id007",
     "model_complex_seed1000_id006",
@@ -359,53 +418,11 @@ model_selection = [
     "model_zero_seed1000_id001",
     "model_zero_seed1000_id000",
 ]
-
-# %%
-plot_predictions(
-    targets_and_predictions_long,
-    densite_population,
-    model_selection,
-    target_selection,
-)
-
-# %%
-plot_predictions(
-    targets_and_predictions_long,
-    densite_population,
-    model_selection,
-    target_selection[:2],
-)
-
-# %%
-plot_predictions(
-    targets_and_predictions_long,
-    densite_population,
-    model_selection,
-    target_selection[2:],
-)
-
-# %%
-plot_residuals(
-    residuals_long, densite_population, model_selection, target_selection
-)
-
-# %%
-plot_residuals(
-    residuals_long, densite_population, model_selection, target_selection[:2]
-)
-
-# %%
-plot_residuals(
-    residuals_long, densite_population, model_selection, target_selection[2:]
-)
-
-# %%
-(
+fig = (
     (targets_and_predictions_per_target)
     .drop(["code_census_tract", "target_name"], axis=1)
     .loc[:, model_selection]
     .corr(method="pearson")
-    .pipe(px.imshow, width=800, height=800)
+    .pipe(px.imshow, width=800, height=600, template="plotly_dark")
 )
-
-# %%
+fig.write_html("correlations_all_models.html")
