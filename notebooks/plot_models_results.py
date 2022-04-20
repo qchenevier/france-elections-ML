@@ -402,7 +402,7 @@ fig.write_html("residuals_voix_inscrits.html")
 fig = plot_residuals(
     residuals_long, densite_population, model_selection, target_selection[2:]
 )
-fig.write_html("residuals_gauche_droit_autre.html")
+fig.write_html("residuals_gauche_droite_autre.html")
 
 # %%
 model_selection = [
