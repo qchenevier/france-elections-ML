@@ -137,7 +137,7 @@ def add_predictions_from_runs(targets, runs):
     return (
         (targets)
         .set_index("code_census_tract")
-        .add_suffix("_target")
+        .add_suffix("_truth")
         .merge(
             compute_predictions_from_runs(runs, targets).set_index(
                 "code_census_tract"
@@ -161,8 +161,8 @@ def compute_targets_and_predictions(targets, runs, model_selection=None):
 def compute_targets_and_predictions_long(targets_and_predictions):
     stubnames = (
         (targets_and_predictions)
-        .filter(regex="_target")
-        .rename(columns=lambda c: c.replace("_target", ""))
+        .filter(regex="_truth")
+        .rename(columns=lambda c: c.replace("_truth", ""))
         .columns.tolist()
     )
     return (
@@ -172,13 +172,13 @@ def compute_targets_and_predictions_long(targets_and_predictions):
             stubnames=stubnames,
             sep="_",
             i="code_census_tract",
-            j="target_or_model",
+            j="model",
             suffix=r"\w+",
         )
         .reset_index()
         .melt(
-            id_vars=["code_census_tract", "target_or_model"],
-            var_name="target_name",
+            id_vars=["code_census_tract", "model"],
+            var_name="target",
         )
     )
 
@@ -187,8 +187,8 @@ def compute_targets_and_predictions_per_target(targets_and_predictions_long):
     return (
         (targets_and_predictions_long)
         .pivot(
-            index=["code_census_tract", "target_name"],
-            columns=["target_or_model"],
+            index=["code_census_tract", "target"],
+            columns=["model"],
         )
         .reset_index()
         .pipe(flatten_column_names)
@@ -206,11 +206,11 @@ def normalize_by_column(df, col):
 
 
 def compute_residuals_per_target(
-    targets_and_predictions_per_target, reference_column="target"
+    targets_and_predictions_per_target, reference_column="truth"
 ):
     return (
         (targets_and_predictions_per_target)
-        .set_index(["code_census_tract", "target_name"])
+        .set_index(["code_census_tract", "target"])
         .pipe(normalize_by_column, reference_column)
         .reset_index()
     )
@@ -218,31 +218,31 @@ def compute_residuals_per_target(
 
 def compute_residuals_long(residuals_per_target):
     return (residuals_per_target).melt(
-        id_vars=["code_census_tract", "target_name"],
+        id_vars=["code_census_tract", "target"],
         value_name="value_ratio",
-        var_name="target_or_model",
+        var_name="model",
     )
 
 
-def compute_facet_params(model_selection, target_selection, plot_size=205):
+def compute_facet_params(model_selection, target_selection, plot_size=170):
     color_discrete_map = {
-        "inscrits": "white",
-        "voix": "palegreen",
+        "inscrits": "grey",
+        "voix": "limegreen",
         "gauche": "tomato",
         "droite": "dodgerblue",
-        "autre": "#ffec80",
+        "autre": "gold",
     }
     target_orders = {
-        "target_name": target_selection,
-        "target_or_model": model_selection,
+        "target": target_selection,
+        "model": model_selection,
     }
-    width = plot_size * (len(model_selection) + 1) + 220
-    height = plot_size * len(target_selection) + 140
+    width = plot_size * (len(model_selection) + 1) + 215
+    height = plot_size * len(target_selection) + 105
     return dict(
-        template="plotly_dark",
-        facet_col="target_or_model",
-        facet_row="target_name",
-        color="target_name",
+        template="plotly_white",
+        facet_col="model",
+        facet_row="target",
+        color="target",
         color_discrete_map=color_discrete_map,
         category_orders=target_orders,
         width=width,
@@ -259,22 +259,35 @@ def plot_predictions(
     facet_kwargs = compute_facet_params(model_selection, target_selection)
     fig = (
         (targets_and_predictions_long)
-        .loc[lambda df: df.target_or_model.isin(model_selection)]
-        .loc[lambda df: df.target_name.isin(target_selection)]
+        .loc[lambda df: df.model.isin(model_selection)]
+        .loc[lambda df: df.target.isin(target_selection)]
         .merge(densite_population, on="code_census_tract")
         .assign(value_per_capita=lambda df: df.value / df.population)
+        .rename(
+            columns={
+                "densite_lognorm": "Density (log normalized)",
+                "value_per_capita": "Prediction",
+            }
+        )
         .plot(
             kind="scatter",
-            x="densite_lognorm",
-            y="value_per_capita",
+            x="Density (log normalized)",
+            y="Prediction",
             size="population",
             opacity=0.5,
             log_y=True,
             **facet_kwargs,
         )
     )
-    fig.update_xaxes(
-        showticklabels=True,
+    fig.update_xaxes(showticklabels=True)
+    fig.update_layout(
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1 + 0.15 / len(target_selection),
+            xanchor="left",
+            x=0
+        )
     )
     return fig
 
@@ -285,21 +298,33 @@ def plot_residuals(
     facet_kwargs = compute_facet_params(model_selection, target_selection)
     fig = (
         (residuals_long)
-        .loc[lambda df: df.target_or_model.isin(model_selection)]
-        .loc[lambda df: df.target_name.isin(target_selection)]
+        .loc[lambda df: df.model.isin(model_selection)]
+        .loc[lambda df: df.target.isin(target_selection)]
         .merge(densite_population, on="code_census_tract")
-        .plot(
+        .rename(
+            columns={
+                "densite_lognorm": "Density (log normalized)",
+                "value_ratio": "Prediction / Truth",
+            }
+        ).plot(
             kind="scatter",
-            x="densite_lognorm",
-            y="value_ratio",
+            x="Density (log normalized)",
+            y="Prediction / Truth",
             size="population",
             opacity=0.5,
             log_y=True,
             **facet_kwargs,
         )
     )
-    fig.update_xaxes(
-        showticklabels=True,
+    fig.update_xaxes(showticklabels=True)
+    fig.update_layout(
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1 + 0.15 / len(target_selection),
+            xanchor="left",
+            x=0
+        )
     )
     return fig
 
@@ -309,6 +334,8 @@ pd.options.plotting.backend = "plotly"
 startup_path = Path.cwd()
 project_path = startup_path.parent
 reload_kedro(project_path)
+embed_kwargs = dict(include_plotlyjs="cdn", full_html=False)
+
 
 # %%
 cache = dict()
@@ -333,7 +360,7 @@ densite_population = compute_densite_population_from_features(features)
 targets_and_predictions = compute_targets_and_predictions(targets, runs)
 targets_and_predictions_long = compute_targets_and_predictions_long(
     targets_and_predictions
-)
+).assign(model=lambda df: (df.model).str.replace(r"seed[0-9]*_id", ""))
 targets_and_predictions_per_target = compute_targets_and_predictions_per_target(
     targets_and_predictions_long
 )
@@ -345,84 +372,86 @@ residuals_long = compute_residuals_long(residuals_per_target)
 # %%
 target_selection = ["inscrits", "voix", "gauche", "droite", "autre"]
 model_selection = [
-    "target",
-    "model_full_seed1000_id009",
-    # "model_full_seed1000_id008",
-    "model_complex_seed1000_id007",
-    # "model_complex_seed1000_id006",
-    "model_light_seed1000_id005",
-    # "model_light_seed1000_id004",
-    "model_minimal_seed1000_id003",
-    # "model_minimal_seed1000_id002",
-    "model_zero_seed1000_id001",
-    # "model_zero_seed1000_id000",
+    "truth",
+    # "model_full_009",
+    # "model_full_008",
+    "model_complex_007",
+    # "model_complex_006",
+    "model_light_005",
+    # "model_light_004",
+    "model_minimal_003",
+    # "model_minimal_002",
+    "model_zero_001",
+    # "model_zero_000",
 ]
 
-# %%
 fig = plot_predictions(
     targets_and_predictions_long,
     densite_population,
     model_selection,
     target_selection,
 )
-fig.write_html("predictions_all_targets.html")
+fig.write_html("predictions_all_targets.html", include_plotlyjs="cdn")
+fig.write_html("predictions_all_targets.embed.html", **embed_kwargs)
 
-# %%
 fig = plot_predictions(
     targets_and_predictions_long,
     densite_population,
     model_selection,
     target_selection[:2],
 )
-fig.write_html("predictions_voix_inscrits.html")
+fig.write_html("predictions_voix_inscrits.html", include_plotlyjs="cdn")
+fig.write_html("predictions_voix_inscrits.embed.html", **embed_kwargs)
 
-# %%
 fig = plot_predictions(
     targets_and_predictions_long,
     densite_population,
     model_selection,
     target_selection[2:],
 )
-fig.write_html("predictions_gauche_droite_autre.html")
+fig.write_html("predictions_gauche_droite_autre.html", include_plotlyjs="cdn")
+fig.write_html("predictions_gauche_droite_autre.embed.html", **embed_kwargs)
 
-# %%
 fig = plot_residuals(
     residuals_long, densite_population, model_selection, target_selection
 )
-fig.write_html("residuals_all_predictions.html")
+fig.write_html("residuals_all_predictions.html", include_plotlyjs="cdn")
+fig.write_html("residuals_all_predictions.embed.html", **embed_kwargs)
 
-
-# %%
 fig = plot_residuals(
     residuals_long, densite_population, model_selection, target_selection[:2]
 )
-fig.write_html("residuals_voix_inscrits.html")
+fig.write_html("residuals_voix_inscrits.html", include_plotlyjs="cdn")
+fig.write_html("residuals_voix_inscrits.embed.html", **embed_kwargs)
 
-# %%
 fig = plot_residuals(
     residuals_long, densite_population, model_selection, target_selection[2:]
 )
-fig.write_html("residuals_gauche_droite_autre.html")
+fig.write_html("residuals_gauche_droite_autre.html", include_plotlyjs="cdn")
+fig.write_html("residuals_gauche_droite_autre.embed.html", **embed_kwargs)
 
 # %%
 model_selection = [
     "target",
-    "model_full_seed1000_id009",
-    "model_full_seed1000_id008",
-    "model_complex_seed1000_id007",
-    "model_complex_seed1000_id006",
-    "model_light_seed1000_id005",
-    "model_light_seed1000_id004",
-    "model_minimal_seed1000_id003",
-    "model_minimal_seed1000_id002",
-    "model_zero_seed1000_id001",
-    "model_zero_seed1000_id000",
+    # "model_full_009",
+    # "model_full_008",
+    "model_complex_007",
+    "model_complex_006",
+    "model_light_005",
+    "model_light_004",
+    "model_minimal_003",
+    "model_minimal_002",
+    "model_zero_001",
+    "model_zero_000",
 ]
 fig = (
     (targets_and_predictions_per_target)
-    .drop(["code_census_tract", "target_name"], axis=1)
+    .drop(["code_census_tract", "truth"], axis=1)
     .loc[:, model_selection]
     .corr(method="pearson")
-    .pipe(px.imshow, width=800, height=600, template="plotly_dark")
+    .pipe(px.imshow, width=800, height=600, template="plotly_white")
 )
-fig.write_html("correlations_all_models.html")
+fig.write_html("correlations_all_models.html", include_plotlyjs="cdn")
+fig.write_html("correlations_all_models.embed.html", **embed_kwargs)
+
+# %%

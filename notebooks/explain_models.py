@@ -166,7 +166,7 @@ def compute_features_colors(series):
     features_colors = {
         n: mpl.colors.rgb2hex(c)
         for n, c in zip(
-            features_values, mpl.cm.coolwarm(features_values_normalized)
+            features_values, mpl.cm.bwr(features_values_normalized)
         )
     }
     return features_colors
@@ -249,7 +249,7 @@ def plot_summary(shap_values_and_features, clip=None):
             "target": target_order,
         },
         color_discrete_map=features_colors,
-        template="plotly_dark",
+        template="plotly_white",
         height=strip_size * len(features_descriptions) + 140,
         facet_col="target",
     )
@@ -338,6 +338,11 @@ for model_name in model_selection:
     fig = plot_summary(
         shap_values_and_features_for_selection[model_name], clip=clip
     )
-    fig.write_html(f"shap_explanations_{model_name}.html", include_plotlyjs="cdn")
+    fig.write_html(f"shap_explanations_{model_name}.html")
+    fig.write_html(
+        f"shap_explanations_{model_name}.embed.html",
+        include_plotlyjs="cdn",
+        full_html=False,
+    )
 
 # %%
