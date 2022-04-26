@@ -9,7 +9,7 @@ def create_pipeline() -> Pipeline:
         [
             node(
                 compute_targets,
-                inputs=["municipales_2020_t1", "census_tract_code"],
+                inputs=["presidentielles_2022_t1", "census_tract_code"],
                 outputs="targets",
                 name="targets",
                 tags="targets",

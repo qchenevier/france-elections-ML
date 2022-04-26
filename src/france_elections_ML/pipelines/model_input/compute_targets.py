@@ -3,58 +3,40 @@ import pandas as pd
 import numpy as np
 
 
-def compute_votes_nuance_by_bureau(df_municipales_2020_t1):
+def compute_votes_by_candidate_by_bureau(df_presidentielles_2022_t1):
     return (
-        (df_municipales_2020_t1)
+        (df_presidentielles_2022_t1)
         .groupby(
-            ["code_commune", "code_bureau_vote", "code_nuance"], as_index=False
+            ["code_commune", "code_bureau_vote", "nom", "prenom"],
+            as_index=False,
         )
-        .agg({"inscrits": "max", "exprimes": "max", "voix": "sum"})
-        .assign(
-            voix=lambda df: np.where(
-                df.code_nuance == "NC", df.exprimes, df.voix
-            )
-        )
-        .drop("exprimes", axis=1)
+        .agg({"inscrits": "max", "voix": "sum"})
     )
 
 
-def compute_votes_gauche_droite_by_bureau(df):
+def compute_votes_gauche_droite_by_candidate_by_bureau(df):
     df_gauche_droite = pd.DataFrame(
         [
-            ("LEXG", "Extrême gauche", "gauche"),
-            ("LCOM", "Parti communiste français", "gauche"),
-            ("LFI", "La France insoumise", "gauche"),
-            ("LSOC", "Parti socialiste", "gauche"),
-            ("LRDG", "Parti radical de gauche", "gauche"),
-            ("LDVG", "Divers gauche", "gauche"),
-            ("LUG", "Union de la gauche", "gauche"),
-            ("LVEC", "Europe Ecologie-Les Verts", "gauche"),
-            ("LECO", "Ecologiste", "gauche"),
-            ("LDIV", "Divers", "autre"),
-            ("LREG", "Régionaliste", "autre"),
-            ("LGJ", "Gilets jaunes", "autre"),
-            ("LREM", "La République en marche", "droite"),
-            ("LMDM", "Modem", "droite"),
-            ("LUDI", "Union des Démocrates et Indépendants", "droite"),
-            ("LUC", "Union du centre", "droite"),
-            ("LDVC", "Divers centre", "droite"),
-            ("LLR", "Les Républicains", "droite"),
-            ("LUD", "Union de la droite", "droite"),
-            ("LDVD", "Divers droite", "droite"),
-            ("LDLF", "Debout la France", "droite"),
-            ("LRN", "Rassemblement National", "droite"),
-            ("LEXD", "Extrême droite", "droite"),
-            ("LNC", "Non Communiqué", "autre"),
-            ("NC", "Non Communiqué", "autre"),
+            ("ARTHAUD", "Nathalie", "gauche"),
+            ("ROUSSEL", "Fabien", "gauche"),
+            ("MACRON", "Emmanuel", "droite"),
+            ("LASSALLE", "Jean", "droite"),
+            ("LE PEN", "Marine", "extreme_droite"),
+            ("ZEMMOUR", "Éric", "extreme_droite"),
+            ("MÉLENCHON", "Jean-Luc", "gauche"),
+            ("HIDALGO", "Anne", "gauche"),
+            ("JADOT", "Yannick", "gauche"),
+            ("PÉCRESSE", "Valérie", "droite"),
+            ("POUTOU", "Philippe", "gauche"),
+            ("DUPONT-AIGNAN", "Nicolas", "extreme_droite"),
         ],
-        columns=["code_nuance", "nom_parti", "gauche_droite"],
+        columns=["nom", "prenom", "gauche_droite"],
     )
     return (
         (df)
         .merge(
-            df_gauche_droite.loc[:, ["code_nuance", "gauche_droite"]],
-            on="code_nuance",
+            df_gauche_droite.loc[:, ["nom", "prenom", "gauche_droite"]],
+            on=["nom", "prenom"],
         )
         .groupby(
             ["code_commune", "code_bureau_vote", "gauche_droite"],
@@ -84,23 +66,23 @@ def aggregate_votes_gauche_droite_by_census_tract(df, df_census_tract_code):
         .groupby(["code_census_tract"], as_index=False)
         .agg(
             {
-                "autre": "sum",
+                "extreme_droite": "sum",
                 "droite": "sum",
                 "gauche": "sum",
                 "inscrits": "sum",
             }
         )
-        .assign(voix=lambda df: df.autre + df.gauche + df.droite)
+        .assign(voix=lambda df: df.extreme_droite + df.gauche + df.droite)
         .sort_values(by="code_census_tract")
         .reset_index(drop=True)
     )
 
 
-def compute_targets(df_municipales_2020_t1, df_census_tract_code):
+def compute_targets(df_presidentielles_2022_t1, df_census_tract_code):
     df_targets = (
-        (df_municipales_2020_t1)
-        .pipe(compute_votes_nuance_by_bureau)
-        .pipe(compute_votes_gauche_droite_by_bureau)
+        (df_presidentielles_2022_t1)
+        .pipe(compute_votes_by_candidate_by_bureau)
+        .pipe(compute_votes_gauche_droite_by_candidate_by_bureau)
         .pipe(
             aggregate_votes_gauche_droite_by_census_tract, df_census_tract_code
         )

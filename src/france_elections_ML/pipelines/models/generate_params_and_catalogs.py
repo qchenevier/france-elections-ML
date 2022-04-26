@@ -17,7 +17,7 @@ grid_dimensions = {
     "hidden_size_factor": [0.5, 0.9],
     "output_activation": ["Softplus"],
     "hidden_activation": ["GELU"],
-    "experiment_id": [10],
+    "experiment_id": [11],
 }
 
 grid = list(ParameterGrid(grid_dimensions))

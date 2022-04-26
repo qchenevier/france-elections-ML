@@ -54,6 +54,24 @@ municipales_2020_t1:
   type: pandas.ParquetDataSet
   filepath: s3://france-elections-ml/02_intermediate/municipales_2020_t1.parquet
 
+presidentielles_2022_t1_raw:
+  type: text.TextDataSet
+  filepath: s3://france-elections-ml/01_raw/resultats-par-niveau-burvot-t1-france-entiere.txt
+
+presidentielles_2022_t1_raw_fixed@text:
+  type: text.TextDataSet
+  filepath: s3://france-elections-ml/02_intermediate/presidentielles_2022_t1_raw_fixed.txt
+
+presidentielles_2022_t1_raw_fixed@CSV:
+  type: pandas.CSVDataSet
+  filepath: s3://france-elections-ml/02_intermediate/presidentielles_2022_t1_raw_fixed.txt
+  load_args:
+    sep: ";"
+
+presidentielles_2022_t1:
+  type: pandas.ParquetDataSet
+  filepath: s3://france-elections-ml/02_intermediate/presidentielles_2022_t1.parquet
+
 census_metadata:
   type: pandas.ParquetDataSet
   filepath: s3://france-elections-ml/02_intermediate/census_metadata.parquet

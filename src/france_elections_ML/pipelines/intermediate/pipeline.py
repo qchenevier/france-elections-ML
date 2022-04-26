@@ -4,6 +4,10 @@ from .compute_municipales_2020_t1 import (
     compute_municipales_2020_t1_raw_fixed,
     compute_municipales_2020_t1,
 )
+from .compute_presidentielles_2022_t1 import (
+    compute_presidentielles_2022_t1_raw_fixed,
+    compute_presidentielles_2022_t1,
+)
 from .compute_census_metadata import compute_census_metadata
 from .compute_census import compute_census
 from .compute_census_tract_shape import (
@@ -32,6 +36,18 @@ def create_pipeline() -> Pipeline:
                 inputs="municipales_2020_t1_raw_fixed@CSV",
                 outputs="municipales_2020_t1",
                 name="municipales_2020_t1",
+            ),
+            node(
+                compute_presidentielles_2022_t1_raw_fixed,
+                inputs="presidentielles_2022_t1_raw",
+                outputs="presidentielles_2022_t1_raw_fixed@text",
+                name="presidentielles_2022_t1_raw_fixed",
+            ),
+            node(
+                compute_presidentielles_2022_t1,
+                inputs="presidentielles_2022_t1_raw_fixed@CSV",
+                outputs="presidentielles_2022_t1",
+                name="presidentielles_2022_t1",
             ),
             node(
                 compute_census_metadata,

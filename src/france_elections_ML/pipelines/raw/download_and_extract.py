@@ -45,4 +45,17 @@ def download_and_extract_municipales_2020_t1():
     )
 
 
+def download_and_extract_presidentielles_2022_t1():
+    # official page: https://www.data.gouv.fr/fr/datasets/election-presidentielle-des-10-et-24-avril-2022-resultats-definitifs-du-1er-tour/
+    return download_and_extract_dataset(
+        url=(
+            "https://static.data.gouv.fr/resources/"
+            "election-presidentielle-des-10-et-24-avril-2022-"
+            "resultats-definitifs-du-1er-tour/"
+            "20220414-152542/resultats-par-niveau-burvot-t1-france-entiere.txt"
+        ),
+        read_kwargs=dict(encoding="ISO-8859-1"),
+    )
+
+
 # %%

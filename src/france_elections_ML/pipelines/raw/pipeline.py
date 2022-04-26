@@ -5,6 +5,7 @@ from .download_and_extract import (
     download_and_extract_commune_code_raw,
     download_and_extract_IRIS_shape_raw,
     download_and_extract_municipales_2020_t1,
+    download_and_extract_presidentielles_2022_t1,
 )
 
 
@@ -34,6 +35,12 @@ def create_pipeline() -> Pipeline:
                 inputs=None,
                 outputs="municipales_2020_t1_raw",
                 name="municipales_2020_t1_raw",
+            ),
+            node(
+                download_and_extract_presidentielles_2022_t1,
+                inputs=None,
+                outputs="presidentielles_2022_t1_raw",
+                name="presidentielles_2022_t1_raw",
             ),
         ],
         tags="raw",
