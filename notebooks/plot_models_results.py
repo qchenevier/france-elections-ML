@@ -1,5 +1,6 @@
 # %%
 from pathlib import Path
+import logging
 import re
 
 import pandas as pd
@@ -118,6 +119,7 @@ def compute_predictions_from_runs(runs, targets):
         features = run["features"]
         suffix = "_" + run["model_name"]
         model = run["model"]
+        logging.info("Computing predictions from run: %s", run["model_name"])
         return (
             (features)
             .pipe(compute_features_with_targets_non_null, targets_non_null)
@@ -226,11 +228,11 @@ def compute_residuals_long(residuals_per_target):
 
 def compute_facet_params(model_selection, target_selection, plot_size=170):
     color_discrete_map = {
-        "inscrits": "grey",
-        "voix": "limegreen",
-        "gauche": "tomato",
-        "droite": "dodgerblue",
-        "autre": "gold",
+        "inscrits": "darkslategray",
+        "voix": "slategray",
+        "gauche": "red",
+        "droite": "blue",
+        "extreme_droite": "darkblue",
     }
     target_orders = {
         "target": target_selection,
@@ -274,7 +276,7 @@ def plot_predictions(
             x="Density (log normalized)",
             y="Prediction",
             size="population",
-            opacity=0.5,
+            opacity=0.1,
             log_y=True,
             **facet_kwargs,
         )
@@ -286,8 +288,11 @@ def plot_predictions(
             yanchor="bottom",
             y=1 + 0.15 / len(target_selection),
             xanchor="left",
-            x=0
+            x=0,
         )
+    )
+    fig.update_traces(
+        marker_line=dict(width=0),
     )
     return fig
 
@@ -306,12 +311,13 @@ def plot_residuals(
                 "densite_lognorm": "Density (log normalized)",
                 "value_ratio": "Prediction / Truth",
             }
-        ).plot(
+        )
+        .plot(
             kind="scatter",
             x="Density (log normalized)",
             y="Prediction / Truth",
             size="population",
-            opacity=0.5,
+            opacity=0.1,
             log_y=True,
             **facet_kwargs,
         )
@@ -323,8 +329,11 @@ def plot_residuals(
             yanchor="bottom",
             y=1 + 0.15 / len(target_selection),
             xanchor="left",
-            x=0
+            x=0,
         )
+    )
+    fig.update_traces(
+        marker_line=dict(width=0),
     )
     return fig
 
@@ -370,19 +379,14 @@ residuals_per_target = compute_residuals_per_target(
 residuals_long = compute_residuals_long(residuals_per_target)
 
 # %%
-target_selection = ["inscrits", "voix", "gauche", "droite", "autre"]
+target_selection = ["inscrits", "voix", "gauche", "droite", "extreme_droite"]
 model_selection = [
-    "truth",
-    # "model_full_009",
-    # "model_full_008",
-    "model_complex_007",
-    # "model_complex_006",
-    "model_light_005",
-    # "model_light_004",
-    "model_minimal_003",
-    # "model_minimal_002",
     "model_zero_001",
-    # "model_zero_000",
+    "model_minimal_003",
+    "model_light_005",
+    "model_complex_007",
+    "model_full_009",
+    "truth",
 ]
 
 fig = plot_predictions(
@@ -391,7 +395,6 @@ fig = plot_predictions(
     model_selection,
     target_selection,
 )
-fig.write_html("predictions_all_targets.html", include_plotlyjs="cdn")
 fig.write_html("predictions_all_targets.embed.html", **embed_kwargs)
 
 fig = plot_predictions(
@@ -400,7 +403,6 @@ fig = plot_predictions(
     model_selection,
     target_selection[:2],
 )
-fig.write_html("predictions_voix_inscrits.html", include_plotlyjs="cdn")
 fig.write_html("predictions_voix_inscrits.embed.html", **embed_kwargs)
 
 fig = plot_predictions(
@@ -409,32 +411,32 @@ fig = plot_predictions(
     model_selection,
     target_selection[2:],
 )
-fig.write_html("predictions_gauche_droite_autre.html", include_plotlyjs="cdn")
-fig.write_html("predictions_gauche_droite_autre.embed.html", **embed_kwargs)
+fig.write_html(
+    "predictions_gauche_droite_extreme_droite.embed.html", **embed_kwargs
+)
 
 fig = plot_residuals(
     residuals_long, densite_population, model_selection, target_selection
 )
-fig.write_html("residuals_all_predictions.html", include_plotlyjs="cdn")
 fig.write_html("residuals_all_predictions.embed.html", **embed_kwargs)
 
 fig = plot_residuals(
     residuals_long, densite_population, model_selection, target_selection[:2]
 )
-fig.write_html("residuals_voix_inscrits.html", include_plotlyjs="cdn")
 fig.write_html("residuals_voix_inscrits.embed.html", **embed_kwargs)
 
 fig = plot_residuals(
     residuals_long, densite_population, model_selection, target_selection[2:]
 )
-fig.write_html("residuals_gauche_droite_autre.html", include_plotlyjs="cdn")
-fig.write_html("residuals_gauche_droite_autre.embed.html", **embed_kwargs)
+fig.write_html(
+    "residuals_gauche_droite_extreme_droite.embed.html", **embed_kwargs
+)
 
 # %%
 model_selection = [
     "target",
-    # "model_full_009",
-    # "model_full_008",
+    "model_full_009",
+    "model_full_008",
     "model_complex_007",
     "model_complex_006",
     "model_light_005",
@@ -451,7 +453,6 @@ fig = (
     .corr(method="pearson")
     .pipe(px.imshow, width=800, height=600, template="plotly_white")
 )
-fig.write_html("correlations_all_models.html", include_plotlyjs="cdn")
 fig.write_html("correlations_all_models.embed.html", **embed_kwargs)
 
 # %%

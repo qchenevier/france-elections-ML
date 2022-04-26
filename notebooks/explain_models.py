@@ -165,9 +165,7 @@ def compute_features_colors(series):
     features_values_normalized = features_values.pipe(lambda s: s / s.max())
     features_colors = {
         n: mpl.colors.rgb2hex(c)
-        for n, c in zip(
-            features_values, mpl.cm.bwr(features_values_normalized)
-        )
+        for n, c in zip(features_values, mpl.cm.bwr(features_values_normalized))
     }
     return features_colors
 
@@ -234,9 +232,9 @@ def plot_summary(shap_values_and_features, clip=None):
         "voix",
         "gauche",
         "droite",
-        "autre",
+        "extreme_droite",
     ]
-    strip_size = 25
+    strip_size = 20
     fig = px.strip(
         df_to_plot,
         y="feature_description",
@@ -338,7 +336,6 @@ for model_name in model_selection:
     fig = plot_summary(
         shap_values_and_features_for_selection[model_name], clip=clip
     )
-    fig.write_html(f"shap_explanations_{model_name}.html")
     fig.write_html(
         f"shap_explanations_{model_name}.embed.html",
         include_plotlyjs="cdn",
