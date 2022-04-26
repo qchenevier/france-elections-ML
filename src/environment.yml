@@ -17,7 +17,7 @@ dependencies:
   - colorlog
 
   # Data ops / ML ops
-  - kedro
+  - kedro==0.17.7
   - neptune-client==0.14.3
   - kedro-neptune==0.0.7
   - s3fs
