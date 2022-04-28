@@ -226,7 +226,7 @@ def compute_residuals_long(residuals_per_target):
     )
 
 
-def compute_facet_params(model_selection, target_selection, plot_size=170):
+def compute_facet_params(model_selection, target_selection, plot_size=200):
     color_discrete_map = {
         "inscrits": "darkslategray",
         "voix": "slategray",
@@ -238,7 +238,7 @@ def compute_facet_params(model_selection, target_selection, plot_size=170):
         "target": target_selection,
         "model": model_selection,
     }
-    width = plot_size * (len(model_selection) + 1) + 215
+    width = plot_size * len(model_selection) + 135
     height = plot_size * len(target_selection) + 105
     return dict(
         template="plotly_white",
@@ -388,6 +388,30 @@ model_selection = [
     "model_full_009",
     "truth",
 ]
+
+fig = plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    ["truth"],
+    target_selection,
+)
+fig.write_html("truth_all_targets.embed.html", **embed_kwargs)
+
+fig = plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    ["truth"],
+    target_selection[:2],
+)
+fig.write_html("truth_voix_inscrits.embed.html", **embed_kwargs)
+
+fig = plot_predictions(
+    targets_and_predictions_long,
+    densite_population,
+    ["truth"],
+    target_selection[2:],
+)
+fig.write_html("truth_gauche_droite_extreme_droite.embed.html", **embed_kwargs)
 
 fig = plot_predictions(
     targets_and_predictions_long,
